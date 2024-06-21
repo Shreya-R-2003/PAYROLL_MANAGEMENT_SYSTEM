@@ -1,0 +1,38 @@
+.sidebar {
+    width: 250px;
+    margin-top: 120px;
+    height: 100vh; /* Make the sidebar span the entire height of the viewport */
+    background-color: #c67707;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fix the sidebar position */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    overflow-y: auto; /* Add scrolling if the content overflows */
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 15px;
+  }
+  
+  .sidebar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .sidebar a:hover {
+    background-color: #f3aa3c;
+    color: #fff;
+  }
+  

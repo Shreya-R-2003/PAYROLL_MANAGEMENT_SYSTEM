@@ -1,0 +1,13 @@
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .content {
+    margin-left: 250px; /* Adjust content position to account for the sidebar width */
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    overflow-y: auto;
+  }
+  

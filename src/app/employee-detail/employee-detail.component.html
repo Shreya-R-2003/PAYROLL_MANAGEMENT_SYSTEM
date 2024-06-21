@@ -1,17 +1,7 @@
-<!-- <div class="employee-detail">
-  <h2>Employee Details</h2>
-  
-  <div>
-    <p><strong>Name:</strong> {{ employee.name }}</p>
-    <p><strong>Email:</strong> {{ employee.email }}</p>
-    <p><strong>Department:</strong> {{ employee.department }}</p>
-    <p><strong>Role:</strong> {{ employee.role }}</p>
-    <p><strong>CTC:</strong> {{ employee.ctc | currency:'USD':'symbol':'1.2-2' }}</p>
-  </div>
-</div> -->
 <div class="employee-detail">
   <h2>Employee Details</h2>
 
+  <!-- Tabs for different sections -->
   <div class="tabs">
     <button [class.active]="currentTab === 'Overview'" (click)="selectTab('Overview')">Overview</button>
     <button [class.active]="currentTab === 'Salary Details'" (click)="selectTab('Salary Details')">Salary Details</button>
@@ -21,6 +11,7 @@
     <button [class.active]="currentTab === 'Loans'" (click)="selectTab('Loans')">Loans</button>
   </div>
 
+  <!-- Content area based on selected tab -->
   <div class="tab-content">
     <div *ngIf="currentTab === 'Overview'">
       <p>Overview content will go here.</p>
@@ -29,7 +20,62 @@
       <p>Salary Details content will go here.</p>
     </div>
     <div *ngIf="currentTab === 'Investments'">
-      <p>Investments content will go here.</p>
+      <!-- Investment tab specific content -->
+      <div class="investment-tabs">
+        <button [class.active]="investmentTab === 'IT Declaration'" (click)="selectInvestmentTab('IT Declaration')">IT Declaration</button>
+        <button [class.active]="investmentTab === 'Proof of Investments'" (click)="selectInvestmentTab('Proof of Investments')">Proof of Investments</button>
+      </div>
+      <!-- Period selector -->
+      <div class="period-selector">
+        <label for="startYear">Select Start Year:</label>
+        <select id="startYear" [(ngModel)]="startYear" (change)="updateEndYear()">
+          <!-- <option [value]="year" *ngFor="let year of years">{{ year }}</option> -->
+        </select>
+      </div>
+      <!-- Investment content based on selected tab and period -->
+      <div class="investment-content">
+        <div *ngIf="investmentTab === 'IT Declaration'">
+          <p>IT Declaration content for {{ startYear }} to {{ endYear }} will go here.</p>
+          <div class="edit-button">
+            <button (click)="editITDeclaration()">
+              <!-- <i class="fas fa-pencil-alt"></i> -->
+               Edit
+            </button>
+          </div>
+          <div class="generic-table">
+            <!-- <h3>Generic Table</h3> -->
+             
+            <table>
+              <thead>
+                <tr>
+                  <th>Particulars</th>
+                  <th>Declared Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Particular 1</td>
+                  <td>$1000</td>
+                </tr>
+                <tr>
+                  <td>Particular 2</td>
+                  <td>$1500</td>
+                </tr>
+                <tr>
+                  <td>Particular 3</td>
+                  <td>$800</td>
+                </tr>
+                <!-- Add more rows as needed -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div *ngIf="investmentTab === 'Proof of Investments'">
+          <p>Proof of Investments content for {{ startYear }} to {{ endYear }} will go here.</p>
+        </div>
+
+        
+      </div>
     </div>
     <div *ngIf="currentTab === 'Reimbursements'">
       <p>Reimbursements content will go here.</p>

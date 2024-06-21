@@ -1,17 +1,22 @@
+/* General styling for the employee-detail component */
 .employee-detail {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 20px auto;
   padding: 20px;
   background-color: #f9f9f9;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Styling for the main heading */
 h2 {
   text-align: center;
   color: #c67707;
+  margin-bottom: 20px;
+  font-size: 24px;
 }
 
+/* Tabs navigation styling */
 .tabs {
   display: flex;
   justify-content: space-around;
@@ -19,29 +24,115 @@ h2 {
 }
 
 button {
-  padding: 10px 15px;
+  padding: 12px 20px;
   border: none;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   background: none;
   cursor: pointer;
-  color: #c67707;
+  color: #555;
+  font-size: 16px;
+  transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 button.active {
   border-color: #c67707;
   font-weight: bold;
+  color: #333;
 }
 
+/* Tab content area styling */
 .tab-content {
   padding: 20px;
   border-top: 1px solid #ddd;
 }
 
 p {
-  font-size: 18px;
-  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
-strong {
+/* Styling for the generic table */
+.generic-table {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden; /* Ensure border-radius is applied correctly */
+}
+
+.generic-table h3 {
+  background-color: #f0f0f0;
   color: #c67707;
+  font-size: 18px;
+  padding: 12px;
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.generic-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.generic-table th, .generic-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.generic-table th {
+  background-color: #f0f0f0;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .employee-detail {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .generic-table h3 {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .generic-table th, .generic-table td {
+    padding: 10px;
+  }
+}
+/* CSS for the label */
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 16px;
+}
+
+.edit-button {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.edit-button button {
+  background: grey;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-button button i {
+  font-size: 18px;
+  color: #007bff; /* Adjust color as needed */
 }

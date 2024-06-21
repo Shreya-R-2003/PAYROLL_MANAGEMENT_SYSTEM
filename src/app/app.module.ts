@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { LoansComponent } from './loans/loans.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     Form16Component,
     EmployeeDetailComponent,
     LoansComponent,
-    NavbarComponent
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
