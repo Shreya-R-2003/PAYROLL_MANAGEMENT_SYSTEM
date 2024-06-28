@@ -5,7 +5,8 @@
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(154, 75, 75, 0.1);
+  margin-top: 8%;
 }
 
 /* Styling for the main heading */
@@ -23,6 +24,10 @@ h2 {
   margin-bottom: 20px;
 }
 
+.tabs button:hover{
+  font-size: 18px;
+  color: #c67707;
+}
 button {
   padding: 12px 20px;
   border: none;
@@ -37,7 +42,7 @@ button {
 button.active {
   border-color: #c67707;
   font-weight: bold;
-  color: #333;
+  color:#c67707;
 }
 
 /* Tab content area styling */
@@ -52,63 +57,96 @@ p {
   margin-bottom: 10px;
 }
 
-/* Styling for the generic table */
-.generic-table {
+.generic-table,
+.proof-table {
   margin-top: 20px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden; /* Ensure border-radius is applied correctly */
+  border-radius: 5px;
+  padding: 10px;
 }
 
-.generic-table h3 {
-  background-color: #f0f0f0;
-  color: #c67707;
+.generic-table h3,
+.proof-table h3 {
   font-size: 18px;
-  padding: 12px;
-  margin: 0;
-  border-bottom: 1px solid #ddd;
+  color: #c67707;
+  margin-bottom: 10px;
 }
 
-.generic-table table {
+.generic-table table,
+.proof-table table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.generic-table th, .generic-table td {
+.generic-table th, .generic-table td,
+.proof-table th, .proof-table td {
   border: 1px solid #ddd;
-  padding: 12px;
+  padding: 8px;
+}
+
+.generic-table th, .proof-table th {
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
   text-align: left;
 }
 
-.generic-table th {
-  background-color: #f0f0f0;
-  color: #555;
-  font-weight: bold;
+.generic-table td, .proof-table td {
+  text-align: left;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .employee-detail {
-    padding: 15px;
-  }
+.proof-form-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-  h2 {
-    font-size: 22px;
-  }
+.proof-form-modal h3 {
+  margin-top: 0;
+}
 
-  button {
-    padding: 10px 16px;
-    font-size: 14px;
-  }
+.proof-form-modal form {
+  display: flex;
+  flex-direction: column;
+}
 
-  .generic-table h3 {
-    font-size: 16px;
-    padding: 10px;
-  }
+.proof-form-modal form label {
+  margin-bottom: 5px;
+}
 
-  .generic-table th, .generic-table td {
-    padding: 10px;
-  }
+.proof-form-modal form input {
+  margin-bottom: 15px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.proof-form-modal form button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #c67707;
+  color: white;
+  cursor: pointer;
+}
+
+.proof-form-modal form button[type="button"] {
+  margin-top: 3px;
+  padding: 10px 15px;
+  background-color: #ccc;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#addproof{
+  color: white;
+  background-color: #c67707;
+  border-radius: 5px;
 }
 /* CSS for the label */
 label {
@@ -135,4 +173,217 @@ label {
 .edit-button button i {
   font-size: 18px;
   color: #007bff; /* Adjust color as needed */
+}
+
+
+/* loans */
+.loan-details {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjusted box shadow */
+}
+
+.Ongoingloans {
+  text-align: left;
+}
+
+.loan-summary {
+  font-size: 14px; /* Smaller font size */
+  margin-left: 2px;
+  margin-top: -20px;
+}
+
+.vertical-line {
+  display: inline-block;
+  border-left: 1.4px solid #000;
+  height: 0.8em; /* Adjust the height as needed */
+  margin: 0 5px; /* Adjust the margin as needed */
+}
+
+.horizontal-layout {
+  display: flex;
+  justify-content: space-between; /* Align items with space between */
+  align-items: center; /* Center content vertically */
+  
+}
+
+.loan-box {
+  flex: 1; /* Flex-grow to evenly distribute space */
+  display: flex; /* Enable flexbox for this element */
+  flex-direction: column; /* Stack child elements vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  padding: 10px; /* Padding for each loan box */
+  border: none;
+  background: none;
+  box-shadow: none;
+  margin-top: 20px;
+}
+
+.loan-values {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.loan-installment{
+  margin-top: 40px;
+  margin-left: 20px;
+}
+
+.h3{
+  color: #c67707;
+  margin-top: 7px;
+}
+
+.loan-headings{
+  color: #c67707;
+}
+
+/* Style for the Payslips and TDS Sheets section */
+.payslip {
+  text-align: left;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+thead th {
+  background-color: #c67707;
+  padding: 13px;
+  text-align: center;
+  font-weight: bold;
+  color: #f2f2f2;
+}
+
+tbody td {
+  padding: 18px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+a {
+  color: #c67707;
+  text-decoration: none;
+}
+
+tbody td a:hover {
+  font-size: large;
+  background-color: #f9f9f9; /* Added hover background color */
+  text-decoration: underline;
+}
+
+
+/* overview */
+.overview {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+/* Styling for each form field */
+.overview p {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* Label styles */
+.overview label {
+  width: 130px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #c67707; /* Label text color */
+}
+
+/* Input fields */
+.overview input[type="text"],
+.overview input[type="number"],
+.overview input[type="date"],
+.overview input[type="tel"],
+.overview input[type="email"],
+.overview select {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; /* Ensure input takes full width of container */
+  font-size: 14px; /* Input text size */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+/* Button styles */
+.overview button {
+  display: block;
+  width: 20%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #c67707;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: large;
+  
+}
+
+/* Button hover effect */
+.overview button:hover {
+  background-color:#f3aa3c;
+}
+
+/* salary*/
+.salary-details{
+  display: flex;
+  justify-content: space-between;
+  gap: 50px; /* Adjust this value to control the space between the two sections */
+  width: fit-content;
+  margin-left:0px;
+  font-size: small;
+}
+
+.salary-detail {
+  text-align: left;
+}
+
+.amount {
+  display: block;
+  margin-top: 5px;
+  font-size: large;
+}
+
+/* Styling for the table */
+
+.salary-table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse; /* Collapse borders between table cells */
+ 
+}
+
+.salary-table th, .salary-table td {
+  padding: 8px;
+  border: none; /* Remove borders from all table cells */
+  padding: 10px;
+  text-align: left;
+}
+
+.salary-table th {
+  font-weight: bold;
+}
+
+.salary-table h4 {
+  margin: 16px 0 8px; /* Add margin for spacing around headings */
+  margin-left: 10px; /*Adjust margin as needed */
+}
+.separator{
+  margin-top: 10px;
+  margin-bottom: 0px;
 }

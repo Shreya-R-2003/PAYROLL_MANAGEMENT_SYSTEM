@@ -1,0 +1,35 @@
+<div class="payrun">
+  <div class="header">
+    <h2>Pay Runs</h2>
+  </div>
+  <div class="tabs">
+    <button [class.active]="currentTab === 'Run Payroll'" (click)="selectTab('Run Payroll')">Run Payroll</button>
+    <button [class.active]="currentTab === 'Payroll History'" (click)="selectTab('Payroll History')">Payroll History</button>
+  </div>
+  <div *ngIf="currentTab === 'Run Payroll'" class="tabs-select">
+    <div class="payrun-content">
+      <h3>Process Pay Run for September 2023 <span class="status">Ready</span></h3>
+      <div class="payrun-details">
+        <div>
+          <div><strong>Employees' Net Pay</strong></div>
+          <div>Yet to process</div>
+        </div>
+        <div>
+          <div><strong>Payment Date:</strong></div>
+          <div>30/06/2024</div>
+        </div>
+        <div>
+          <div><strong>No. of Employees:</strong></div>
+          <div>27</div>
+        </div>
+        <div class="payrun-action">
+          <a routerLink="/regular-payroll"><button>Create Pay Run</button></a>
+        </div>
+      </div>
+      <p>Please process and approve this pay run before 30/06/2024</p>
+    </div>
+  </div>
+  <div *ngIf="currentTab === 'Payroll History'" class="tabs-select">
+    <div class="payrollhistory">Payroll history content</div>
+  </div>
+</div>

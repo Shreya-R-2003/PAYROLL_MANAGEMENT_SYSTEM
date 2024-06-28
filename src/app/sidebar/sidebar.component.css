@@ -10,7 +10,7 @@
     left: 0; /* Align to the left */
     overflow-y: auto; /* Add scrolling if the content overflows */
   }
-  
+
   .sidebar ul {
     list-style: none;
     padding: 0;

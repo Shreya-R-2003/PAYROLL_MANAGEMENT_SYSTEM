@@ -1,60 +1,140 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+interface Loan {
+  employeeName: string;
+  loanType: string;
+  loanAmount: number;
+  prerequisiteRate: number;
+  disbursementDate: Date;
+  reason: string;
+  startDate: Date;
+  instalmentAmount: number;
+  amountPaid: number;
+  amountPending: number;
+}
+
+interface ManagedLoan {
+  loanName: string;
+  prerequisiteRate: number;
+}
+
 @Component({
   selector: 'app-loans',
   templateUrl: './loans.component.html',
   styleUrls: ['./loans.component.css']
 })
 export class LoansComponent implements OnInit {
-  loans: any[] = [];
-  showForm: boolean = false;
-  loanForm: FormGroup;
+  loans: Loan[] = []; // Array to hold existing loans
+  managedLoans: ManagedLoan[] = []; // Array to hold managed loans
+  showAddLoanModal: boolean = false; // Flag to control visibility of Add New Loan modal
+  showManageLoans: boolean = false; // Flag to control visibility of Manage Loans modal
+  showAddLoanTypeForm: boolean = false; // Flag to control visibility of Add Loan Type form
 
-  constructor(private fb: FormBuilder) {
-    this.loanForm = this.fb.group({
+  loanForm: FormGroup; // Form group for Add New Loan form
+  manageLoansForm: FormGroup; // Form group for Add Loan Type form
+
+  constructor(private formBuilder: FormBuilder) {
+    // Initialize form groups and form controls
+    this.loanForm = this.formBuilder.group({
       employeeName: ['', Validators.required],
       loanType: ['', Validators.required],
-      loanAmount: [0, [Validators.required, Validators.min(1)]],
-      amountPaid: [0, [Validators.required, Validators.min(0)]],
-      amountPending: [0, [Validators.required, Validators.min(0)]],
+      loanAmount: ['', [Validators.required, Validators.min(0.01)]],
+      disbursementDate: ['', Validators.required],
+      prerequisiteRate: ['', [Validators.required, Validators.min(0.01)]],
+      reason: ['', Validators.required],
+      startDate: ['', Validators.required],
+      instalmentAmount: ['', [Validators.required, Validators.min(0.01)]]
+    });
+
+    this.manageLoansForm = this.formBuilder.group({
+      loanName: ['', Validators.required],
+      prerequisiteRate: ['', [Validators.required, Validators.min(0.01)]]
     });
   }
 
   ngOnInit(): void {
     this.loans = [
-      { employeeName: 'John Doe', loanType: 'Home Loan', loanAmount: 50000, amountPaid: 20000, amountPending: 30000 },
-      { employeeName: 'Jane Smith', loanType: 'Car Loan', loanAmount: 30000, amountPaid: 10000, amountPending: 20000 },
-      { employeeName: 'Alice Johnson', loanType: 'Personal Loan', loanAmount: 20000, amountPaid: 15000, amountPending: 5000 },
-      { employeeName: 'Bob Brown', loanType: 'Education Loan', loanAmount: 40000, amountPaid: 25000, amountPending: 15000 },
+      { 
+        employeeName: 'John Doe', 
+        loanType: 'Personal', 
+        loanAmount: 5000, 
+        prerequisiteRate: 5,
+        disbursementDate: new Date('2023-01-15'),
+        reason: 'Medical emergency',
+        startDate: new Date('2023-02-01'),
+        instalmentAmount: 1000,
+        amountPaid: 1000,
+        amountPending: 4000
+      },
+      { 
+        employeeName: 'Jane Smith', 
+        loanType: 'Home', 
+        loanAmount: 10000, 
+        prerequisiteRate: 10,
+        disbursementDate: new Date('2023-03-10'),
+        reason: 'House renovation',
+        startDate: new Date('2023-04-01'),
+        instalmentAmount: 1500,
+        amountPaid: 3000,
+        amountPending: 7000
+      }
+    ];
+
+    this.managedLoans = [
+      { loanName: 'Car Loan', prerequisiteRate: 5 },
+      { loanName: 'Education Loan', prerequisiteRate: 3 }
     ];
   }
 
-  toggleForm(): void {
-    this.showForm = !this.showForm;
-    if (!this.showForm) {
-      this.resetForm();
-    }
-  }
-
+  // Method to submit Add New Loan form
   onSubmit(): void {
     if (this.loanForm.valid) {
-      this.loans.push(this.loanForm.value);
-      this.resetForm();
-      this.showForm = false;
+      const newLoan: Loan = {
+        employeeName: this.loanForm.value.employeeName,
+        loanType: this.loanForm.value.loanType,
+        loanAmount: this.loanForm.value.loanAmount,
+        prerequisiteRate: this.loanForm.value.prerequisiteRate,
+        disbursementDate: this.loanForm.value.disbursementDate,
+        reason: this.loanForm.value.reason,
+        startDate: this.loanForm.value.startDate,
+        instalmentAmount: this.loanForm.value.instalmentAmount,
+        amountPaid: 0,
+        amountPending: this.loanForm.value.loanAmount 
+      };
+
+      this.loans.push(newLoan);
+      this.toggleAddLoanModal(); 
+      this.loanForm.reset(); 
     }
   }
 
-  resetForm(): void {
-    this.loanForm.reset({
-      employeeName: '',
-      loanType: '',
-      loanAmount: 0,
-      amountPaid: 0,
-      amountPending: 0
-    });
-    Object.keys(this.loanForm.controls).forEach(key => {
-      this.loanForm.get(key)?.setErrors(null);
-    });
+  // Method to toggle visibility of Add New Loan modal
+  toggleAddLoanModal(): void {
+    this.showAddLoanModal = !this.showAddLoanModal;
+  }
+
+  // Method to submit Add Loan Type form
+  onManageLoansSubmit(): void {
+    if (this.manageLoansForm.valid) {
+      const newManagedLoan: ManagedLoan = {
+        loanName: this.manageLoansForm.value.loanName,
+        prerequisiteRate: this.manageLoansForm.value.prerequisiteRate
+      };
+
+      this.managedLoans.push(newManagedLoan);
+      this.toggleAddLoanTypeForm();
+      this.manageLoansForm.reset(); 
+    }
+  }
+
+  // Method to toggle visibility of Add Loan Type form
+  toggleAddLoanTypeForm(): void {
+    this.showAddLoanTypeForm = !this.showAddLoanTypeForm;
+  }
+
+  // Method to toggle visibility of Manage Loans modal
+  toggleManageLoans(): void {
+    this.showManageLoans = !this.showManageLoans;
   }
 }

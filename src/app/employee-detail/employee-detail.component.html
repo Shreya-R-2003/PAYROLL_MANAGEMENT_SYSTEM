@@ -13,12 +13,88 @@
 
   <!-- Content area based on selected tab -->
   <div class="tab-content">
-    <div *ngIf="currentTab === 'Overview'">
-      <p>Overview content will go here.</p>
+    
+    <div *ngIf="currentTab === 'Overview'" class="overview">
+      <p><label for="name">Name:</label> <input id="name" [(ngModel)]="employee.name" type="text"></p>
+      <p><label for="email">Email:</label> <input id="email" [(ngModel)]="employee.email" type="email"></p>
+      <p><label for="department">Department:</label> <input id="department" [(ngModel)]="employee.department" type="text"></p>
+      <p><label for="role">Role:</label> <input id="role" [(ngModel)]="employee.role" type="text"></p>
+      <p><label for="ctc">CTC:</label> <input id="ctc" [(ngModel)]="employee.ctc" type="number"></p>
+      <p><label for="dob">Date of Birth:</label> <input id="dob" [(ngModel)]="employee.dob" type="date"></p>
+      <p><label for="address">Address:</label> <input id="address" [(ngModel)]="employee.address" type="text"></p>
+      <p><label for="mobile">Mobile Number:</label> <input id="mobile" [(ngModel)]="employee.mobile" type="tel"></p>
+      <p><label for="gender">Gender:</label>
+        <select id="gender" [(ngModel)]="employee.gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </p>
+      <p><label for="position">Position:</label> <input id="position" [(ngModel)]="employee.position" type="text"></p>
+      <button type="button" (click)="saveEmployee()">Save</button>
     </div>
     <div *ngIf="currentTab === 'Salary Details'">
-      <p>Salary Details content will go here.</p>
+      <h3>Salary Details</h3>
+      <div class="salary-details">
+        <div class="salary-detail">
+          <span>ANNUAL CTC</span>
+          <span class="amount">4,20,000.00 per year</span>
+        </div>
+        <div class="salary-detail">
+          <span>MONTHLY CTC</span>
+          <span class="amount">35,000.00 per month</span>
+        </div>
+      </div>
+      <div>
+        <table class="salary-table">
+          <thead>
+            <tr>
+              <th>Salary Components</th>
+              <th>Monthly Amount</th>
+              <th>Annual Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <h4>Earnings</h4>
+            <tr>
+              <td>Basic Pay</td>
+              <td>19,830.00</td>
+              <td>2,37,960.00</td>
+            </tr>
+            <tr>
+              <td>House Rent Allowance</td>
+              <td>6,610.00</td>
+              <td>79,320.00</td>
+            </tr>
+            <tr>
+              <td>Fixed Allowance</td>
+              <td>6,610.00</td>
+              <td>79,320.00</td>
+            </tr>
+            <tr>
+              <td colspan="3"><hr class="separator"></td> <!-- Horizontal line -->
+            </tr>
+            <h4>Deductions</h4>
+            <tr>
+              <td>EPF</td>
+              <td>1,800.00</td>
+              <td>21,600</td>
+            </tr>
+            <tr>
+              <td>EDLI</td>
+              <td>75.00</td>
+              <td>900.00</td>
+            </tr>
+            <tr>
+              <td>EPF</td>
+              <td>75.00</td>
+              <td>900.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+    
     <div *ngIf="currentTab === 'Investments'">
       <!-- Investment tab specific content -->
       <div class="investment-tabs">
@@ -39,12 +115,11 @@
           <div class="edit-button">
             <button (click)="editITDeclaration()">
               <!-- <i class="fas fa-pencil-alt"></i> -->
-               Edit
+              Edit
             </button>
           </div>
           <div class="generic-table">
             <!-- <h3>Generic Table</h3> -->
-             
             <table>
               <thead>
                 <tr>
@@ -72,19 +147,139 @@
         </div>
         <div *ngIf="investmentTab === 'Proof of Investments'">
           <p>Proof of Investments content for {{ startYear }} to {{ endYear }} will go here.</p>
-        </div>
-
-        
+          <button id="addproof" (click)="openProofForm()">Add New Proof</button>
+          <div class="proof-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Particulars</th>
+                  <th>Declared Amount</th>
+                  <th>Proofs</th>
+                  <th>Comment</th>
+                  <th>Actual Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let proof of proofs">
+                  <td>{{ proof.particulars }}</td>
+                  <td>{{ proof.declaredAmount }}</td>
+                  <td>
+                    <button *ngIf="!proof.proof" (click)="uploadProof(proof)">Upload</button>
+                    <span *ngIf="proof.proof">{{ proof.proof }}</span>
+                  </td>
+                  <td>
+                    <button *ngIf="!proof.comment" (click)="addComment(proof)">Add</button>
+                    <span *ngIf="proof.comment">{{ proof.comment }}</span>
+                  </td>
+                  <td>{{ proof.actualAmount }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="showProofForm" class="proof-form-modal">
+            <h3>Add New Proof of Investment</h3>
+            <form (ngSubmit)="submitProofForm()">
+              <label for="particulars">Particulars:</label>
+              <input type="text" id="particulars" [(ngModel)]="newProof.particulars" name="particulars" required>
+  
+              <label for="declaredAmount">Declared Amount:</label>
+              <input type="number" id="declaredAmount" [(ngModel)]="newProof.declaredAmount" name="declaredAmount" required>
+  
+              <label for="actualAmount">Actual Amount:</label>
+              <input type="number" id="actualAmount" [(ngModel)]="newProof.actualAmount" name="actualAmount" required>
+  
+              <button type="submit">Add</button>
+              <button type="button" (click)="closeProofForm()">Cancel</button>
+            </form>
+          </div>
+        </div>        
       </div>
     </div>
     <div *ngIf="currentTab === 'Reimbursements'">
       <p>Reimbursements content will go here.</p>
+      <div class="reimbursement-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Reimbursements</th>
+              <th>Paid</th>
+              <th>Approved and Unpaid</th>
+              <th>Pending Approval</th>
+              <th>Unclaimed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reimbursement of reimbursements">
+              <td>
+                <div>{{ reimbursement.name }}</div>
+                <div>{{ reimbursement.eligibleAmount | currency:'USD' }}</div>
+              </td>
+              <td>{{ reimbursement.paid | currency:'USD' }}</td>
+              <td>{{ reimbursement.approvedUnpaid | currency:'USD' }}</td>
+              <td>{{ reimbursement.pendingApproval | currency:'USD' }}</td>
+              <td>{{ reimbursement.unclaimed | currency:'USD' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+
     <div *ngIf="currentTab === 'Payslips and forms'">
-      <p>Payslips and forms content will go here.</p>
+      <h2 class="payslip">Payslips and TDS Sheets</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Payment Date</th>
+            <th>Month</th>
+            <th>Payslips</th>
+            <th>TDS Sheet</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let payslip of payslips">
+            <td>{{ payslip.paymentDate }}</td>
+            <td>{{ payslip.month }}</td>
+            <td><a href="">View</a></td>
+            <td><a href="">View</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div *ngIf="currentTab === 'Loans'">
-      <p>Loans content will go here.</p>
+      <h2 class="Ongoingloans">Ongoing Loans</h2>
+      <div *ngIf="hasLoan; else noLoan">
+        <div class="loan-details">
+          <h3 class="h3">Car Loan</h3>
+          <div class="loan-summary">
+            <span class="loan-detail">Loan Amount: ₹ {{ loanDetails.loanAmount }}</span>
+            <span class="vertical-line"></span>
+            <span class="loan-detail">Loan ID: {{ loanDetails.loanId }}</span>
+          </div>
+          <hr>
+          <div class="horizontal-layout">
+            <div class="loan-box">
+              <div class="loan-headings">Installment Amount</div>
+              <div class="loan-values">₹ {{ loanDetails.installmentAmount }}</div>
+            </div>
+            <div class="loan-box">
+              <div class="loan-headings">Amount Repaid</div>
+              <div class="loan-values">₹ {{ loanDetails.amountRepaid }}</div>
+            </div>
+            <div class="loan-box">
+              <div class="loan-headings">Remaining Amount</div>
+              <div class="loan-values">₹ {{ loanDetails.remainingAmount }}</div>
+            </div>
+          </div>
+          <div class="loan-installment">
+            <span class="loan-detail">{{ loanDetails.installmentsRemaining }} Installment(s) Remaining</span>
+            <span class="vertical-line"></span>
+            <span class="loan-detail">Next Installment Date: {{ loanDetails.nextInstallmentDate }}</span>
+          </div>
+        </div>
+      </div>
+      <ng-template #noLoan>
+        <p>No loans taken by this employee.</p>
+      </ng-template>
     </div>
   </div>
 </div>

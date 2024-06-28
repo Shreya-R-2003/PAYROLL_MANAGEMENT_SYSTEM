@@ -1,0 +1,211 @@
+/* General styles for the regular payroll component */
+.regular-payroll {
+  padding: 20px;
+  margin-top: 100px; /* Adjust to ensure content starts below the navbar */
+  margin-left: 270px; /* Adjust to ensure content starts after the sidebar */
+  text-align: center;
+}
+
+.information-sections {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.information-section {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 5px;
+  width: 30%;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: font-size 0.3s, color 0.3s;
+  font-size: 16px;
+}
+
+.tabs button.active {
+  color: #c67707;
+  font-size: 20px;
+}
+
+.tab-content {
+  margin-top: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.employee-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.employee-summary-table th,
+.employee-summary-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.employee-summary-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.employee-summary-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.employee-summary-table tbody tr:hover {
+  background-color: #f3f3f3;
+}
+#submitbutton{
+  margin-bottom: 12px;
+  background-color: #c67707;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+
+}
+#submitbutton:hover{
+  background-color: #f3aa3c;
+}
+.filter-options {
+  margin-bottom: 12px;
+}
+
+.filter-options label {
+  margin-right: 10px;
+}
+
+/* Styling for the confirmation modal */
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.modal-content button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #c67707;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+  background-color: #f3aa3c;
+}
+
+.bank-advice-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bank-advice-modal .modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.bank-advice-modal .modal-content h3 {
+  margin-top: 0;
+}
+
+.bank-advice-modal .modal-content label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.bank-advice-modal .modal-content select {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.bank-advice-modal .modal-content div {
+  margin-bottom: 10px;
+}
+
+.bank-advice-modal .modal-content button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #c67707;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.bank-advice-modal .modal-content button:hover {
+  background-color: #f3aa3c;
+}
+
+#bankadvicebutton{
+  margin-top: 4px;
+  background-color: #0162ca;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 7px 8px;
+  margin-top: 7px;
+}
+
+#bankadvicebutton:hover{
+  background-color: #5abdff;
+}
+
+.deductions{
+  text-align: left;
+  color: #c67707;
+}
+
+.Tax-table{
+  text-align: left;
+}
+
+.Tax-table th, .Tax-table td{
+  padding:10px;
+  width:40%;
+}

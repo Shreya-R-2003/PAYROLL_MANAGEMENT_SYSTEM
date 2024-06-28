@@ -1,0 +1,81 @@
+.payrun {
+  text-align: center;
+  margin-left: -50%;
+  margin-top: 8.5%;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  gap: 10px; /* Add gap between buttons */
+  margin-bottom: 20px;
+  margin-left: 6%;
+  margin-top: -10px;
+}
+
+.tabs button {
+  background: none;
+  border: none; /* Ensure no border */
+  padding: 10px 15px; /* Adjust padding to control button size */
+  cursor: pointer;
+  transition: font-size 0.3s, color 0.3s;
+  font-size: 16px;
+}
+
+/* Optional: Adding Active State Styling */
+.tabs button.active {
+  color: #c67707;
+  font-size: 20px;
+}
+
+.payrun-content {
+  background-color: white;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-left:30%;
+  border: none;
+  margin-top: -50px;
+}
+
+.payrun-details {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  margin-left: 34.5%;
+  display: flex;
+  gap:80px;
+  justify-content: center;
+}
+
+.payrun-details div {
+  margin-bottom: 10px;
+}
+
+.status {
+  background-color:#c67707;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.payrun-action button {
+  padding: 10px 20px;
+  background-color: #c67707;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.payrun-action button:hover {
+  background-color: #f3aa3c;
+}
+
+.payrollhistory{
+  margin-left: 1%;
+}

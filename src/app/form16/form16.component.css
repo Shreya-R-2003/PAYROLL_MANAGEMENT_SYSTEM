@@ -5,7 +5,6 @@ form {
     align-items: center;
     gap: 15px;
     padding: 20px;
-    border: 1px solid #e0e0e0;
     border-radius: 8px;
     max-width: 400px;
     margin: 50px auto 0; /* Added margin at the top */
@@ -63,8 +62,10 @@ div {
     width: 100%;
     text-align: center;
     padding: 10px;
-    border: 1px solid #e0e0e0;
     border-radius: 5px;
-    background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.form16{
+    margin-top: 12%;
 }
