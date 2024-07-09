@@ -37,13 +37,13 @@ export class DashboardComponent implements OnInit {
           data: [500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600],
           backgroundColor: 'rgba(255, 99, 132, 0.6)',
           stack: 'Stack 0',
+        },
+        {
+          label: 'Gross Pay',
+          data: [3500, 3500, 3900, 3900, 4200, 4400, 4600, 4800, 5000, 5200, 5400, 5600],
+          backgroundColor: 'rgba(83, 43, 162, 0.796)',
+          stack: 'Stack 1',
         }
-        // {
-        //   label: 'Gross Pay',
-        //   data: [3500, 3500, 3900, 3900, 4200, 4400, 4600, 4800, 5000, 5200, 5400, 5600],
-        //   backgroundColor: 'rgba(153, 102, 255, 0.6)',
-        //   stack: 'Stack 1',
-        // }
       ]
     };
 

@@ -1,0 +1,32 @@
+<div class="work-locations">
+
+  <div>
+    <app-settings-sidebar></app-settings-sidebar>
+  </div>
+    <div class="header">
+      <h2>Work Locations</h2>
+      <button (click)="showAddLocationForm()" class="add-location-btn">Add Location</button>
+    </div>
+    <div *ngIf="isAddLocationFormVisible" class="add-location-form">
+      <h4>Add Work Location</h4>
+      <div class="form-group">
+        <label for="locationName">Location Name</label>
+        <input type="text" id="locationName" [(ngModel)]="newLocation.name">
+      </div>
+      <div class="form-group">
+        <label for="locationAddress">Address</label>
+        <input type="text" id="locationAddress" [(ngModel)]="newLocation.address">
+      </div>
+      <div class="form-group">
+        <label for="locationEmployees">Number of Employees</label>
+        <input type="number" id="locationEmployees" [(ngModel)]="newLocation.employees">
+      </div>
+      <button (click)="addLocation()">Add</button>
+    </div>
+    <div *ngFor="let location of workLocations" class="work-location">
+      <h4>{{ location.name }}</h4>
+      <p>{{ location.address }}</p>
+      <small>{{ location.employees }} Employees</small>
+    </div>
+  </div>
+  

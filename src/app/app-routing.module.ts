@@ -10,7 +10,7 @@ import { LoansComponent } from './loans/loans.component';
 import { PayrunsComponent } from './payruns/payruns.component';
 import { RegularPayrollComponent } from './regular-payroll/regular-payroll.component';
 import {OrganizationprofileComponent} from './organizationprofile/organizationprofile.component';
-
+import { WorklocationsComponent } from './worklocations/worklocations.component';
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'employee-detail', component: EmployeeDetailComponent },
   { path: 'payruns', component: PayrunsComponent },
   { path: 'regular-payroll', component: RegularPayrollComponent },
-  { path: 'organizationprofile', component: OrganizationprofileComponent }
+  { path: 'organizationprofile', component: OrganizationprofileComponent },
+  { path: 'worklocations', component:WorklocationsComponent}
 ];
 
 @NgModule({

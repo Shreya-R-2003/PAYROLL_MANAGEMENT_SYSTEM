@@ -16,6 +16,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { PayrunsComponent } from './payruns/payruns.component';
 import { RegularPayrollComponent } from './regular-payroll/regular-payroll.component';
 import { OrganizationprofileComponent } from './organizationprofile/organizationprofile.component';
+import { WorklocationsComponent } from './worklocations/worklocations.component';
+import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { OrganizationprofileComponent } from './organizationprofile/organization
     SidebarComponent,
     PayrunsComponent,
     RegularPayrollComponent,
-    OrganizationprofileComponent
+    OrganizationprofileComponent,
+    WorklocationsComponent,
+    SettingsSidebarComponent
   ],
   imports: [
     BrowserModule,
