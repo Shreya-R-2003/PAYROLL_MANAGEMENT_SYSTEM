@@ -1,0 +1,126 @@
+<div class="sidebar">
+  <ul>
+    <li>
+      <a routerLink="/organizationprofile">Organization Profile</a>
+    </li>
+  </ul>
+</div>
+
+<div class="organization-profile">
+  <div class="header">
+    <h2>Organisation Profile</h2>
+    <span>ID: 60018432811</span>
+  </div>
+  <div class="form-section">
+    <div class="form-group logo-upload">
+      <input type="file" id="organizationLogo">
+      <label for="organizationLogo"><p>Upload Logo</p></label>
+      <span>
+        <small>This logo will be displayed on documents such as Payslip and TDS Worksheet.</small>
+        <small>Preferred Image Size: 240 × 240 pixels &#64; 72 DPI, Maximum size of 1MB.</small>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="organizationName">Organisation Name</label>
+      <input type="text" id="organizationName" value="Zylker Corporation">
+      <small>This is your registered business name which will appear in all the forms and payslips.</small>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="businessLocation">Business Location</label>
+        <input type="text" id="businessLocation" value="India">
+      </div>
+      <div class="form-group">
+        <label for="industry">Industry</label>
+        <select id="industry">
+          <option>Agency or Sales House</option>
+          <!-- Add other options as needed -->
+        </select>
+      </div>
+    </div>
+
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="dateFormat">Date Format</label>
+        <input type="date" id="dateFormat">
+      </div>
+      <div class="form-group">
+        <label for="fieldSeparator">Field Separator</label>
+        <input type="text" id="fieldSeparator" value="/">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="organizationAddress">Organisation Address</label>
+      <input type="text" id="organizationaddress">
+    </div>
+
+    <!-- New Filing Address Section -->
+    <div class="form-group">
+      <label for="filingAddress">Filing Address</label>
+      <input type="text" id="filingAddress">
+      <small>The registered address will be used across all the payslips and forms.</small>
+    </div>
+
+    <!-- Contact Information Section -->
+    <div class="contact-information">
+      <h3>Contact Information</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="primaryContact">Primary Contact Details</label>
+          <small>The below email ID will be used to send reminders and notifications from the app.</small>
+          <div>
+            <a href="mailto:{{primaryContactEmail}}" id="primaryContactEmail">{{primaryContactEmail}}</a>
+            <button (click)="openChangePrimaryContactModal()">Change</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="emailSender">Emails are sent through</label>
+          <small>This will help configure the sender address field in the notifications from our app.</small>
+          <div>
+            <span id="emailSender">{{emailSender}}</span>
+            <button (click)="openChangeEmailSenderModal()">Change</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Change Primary Contact Modal -->
+    <div id="changePrimaryContactModal" class="modal" [ngClass]="{'show': isChangePrimaryContactModalOpen}">
+      <div class="modal-content">
+        <span class="close" (click)="closeChangePrimaryContactModal()">&times;</span>
+        <h2>Change Primary Contact Email</h2>
+        <form (submit)="submitChangePrimaryContact()">
+          <div class="form-group">
+            <label for="newPrimaryContactEmail">New Email Address</label>
+            <input type="email" id="newPrimaryContactEmail" name="newPrimaryContactEmail" [(ngModel)]="newPrimaryContactEmail" required>
+          </div>
+          <div class="button-group">
+            <button type="submit">Change</button>
+            <button type="button" (click)="closeChangePrimaryContactModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Change Email Sender Modal -->
+    <div id="changeEmailSenderModal" class="modal" [ngClass]="{'show': isChangeEmailSenderModalOpen}">
+      <div class="modal-content">
+        <span class="close" (click)="closeChangeEmailSenderModal()">&times;</span>
+        <h2>Change Email Sender Address</h2>
+        <form (submit)="submitChangeEmailSender()">
+          <div class="form-group">
+            <label for="newEmailSender">New Email Sender Address</label>
+            <input type="email" id="newEmailSender" name="newEmailSender" [(ngModel)]="newEmailSender" required>
+          </div>
+          <div class="button-group">
+            <button type="submit">Change</button>
+            <button type="button" (click)="closeChangeEmailSenderModal()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    
+  </div>
+</div>

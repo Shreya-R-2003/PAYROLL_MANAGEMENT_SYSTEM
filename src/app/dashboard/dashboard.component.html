@@ -1,7 +1,82 @@
-<div class="dashboard-container">
-  <app-sidebar></app-sidebar>
-  <div class="content">
-    <!-- The main content of the dashboard will go here -->
-    <router-outlet></router-outlet>
-  </div>
+<div class="dashboard">
+  <header>
+    <input type="text" class="search-bar" placeholder="Search...">
+    <div class="header-buttons">
+      <button class="header-button">🔔</button>
+      <button class="header-button" (click)="openSettingsDialog()">⚙️</button>
+      <button class="header-button">❓</button>
+    </div>
+  </header>
+  <main>
+
+    
+    <div id="settingsDialog" class="modal" [ngClass]="{'show': isSettingsDialogOpen}">
+      <div class="modal-content">
+        <span class="close" (click)="closeSettingsDialog()">&times;</span>
+        <h2>Settings</h2>
+        <div class="options">
+          <a routerLink="/organizationprofile">Organization Profile</a>
+    
+        </div>
+      </div>
+    </div>
+    <div id="welcome-content">Welcome, {{ companyName }}!</div>
+    <div class="payrun-content">
+      <h3>Process Pay Run for September 2023 <span class="status">Ready</span></h3>
+      <div class="payrun-details">
+        <div>
+          <div><strong>Employees' Net Pay</strong></div>
+          <div>Yet to process</div>
+        </div>
+        <div>
+          <div><strong>Payment Date:</strong></div>
+          <div>30/06/2024</div>
+        </div>
+        <div>
+          <div><strong>No. of Employees:</strong></div>
+          <div>27</div>
+        </div>
+        <div class="payrun-action">
+          <a routerLink="/regular-payroll"><button>Create Pay Run</button></a>
+        </div>
+      </div>
+      <p id="approve-warning">Please process and approve this pay run before  <span id="approve-warning-date">30/06/2024</span></p>
+    </div>
+    <div class="information-section">
+      <h3>Deduction Summary</h3>
+      <div class="deduction">
+        <div class="details">
+          <span>EPF</span>
+          <span>₹389,563.89</span>
+          <span class="color">View Details</span>
+        </div>
+        <div class="details">
+          <span>ESI</span>
+          <span>₹1,910.00</span>
+          <span class="color">View Details</span>
+        </div>
+        <div class="details">
+          <span>TDS Deduction</span>
+          <span>₹2,108,251.00</span>
+          <span class="color">View Details</span>
+        </div>
+      </div>
+      <h3 class="h3">Employee Summary</h3>
+      <div class="detail">
+        <span>EMPLOYEES ACTIVE</span>
+        <span>27</span>
+        <span class="color">View Employees</span>
+      </div>
+    </div>
+    <div class="chart-container">
+      <canvas id="paySummaryChart"></canvas>
+    </div>
+    <div class="to-do-tasks">
+      <h2>To Do Tasks</h2><hr>
+      <div class="task">
+        <p>1 Proof of Investment(s) pending approval.</p>
+        <button>Approve</button>
+      </div>
+    </div>
+  </main>
 </div>

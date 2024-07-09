@@ -9,7 +9,7 @@ import { EmployeeDetailComponent } from './employee-detail/employee-detail.compo
 import { LoansComponent } from './loans/loans.component';
 import { PayrunsComponent } from './payruns/payruns.component';
 import { RegularPayrollComponent } from './regular-payroll/regular-payroll.component';
-
+import {OrganizationprofileComponent} from './organizationprofile/organizationprofile.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -21,8 +21,8 @@ const routes: Routes = [
   { path: 'loans', component: LoansComponent },
   { path: 'employee-detail', component: EmployeeDetailComponent },
   { path: 'payruns', component: PayrunsComponent },
-  { path: 'regular-payroll', component: RegularPayrollComponent } // Add route for new component
-
+  { path: 'regular-payroll', component: RegularPayrollComponent },
+  { path: 'organizationprofile', component: OrganizationprofileComponent }
 ];
 
 @NgModule({

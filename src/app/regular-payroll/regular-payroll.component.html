@@ -1,225 +1,224 @@
 <div class="regular-payroll">
-    <h2>Regular Payroll</h2>
+  <h2>Regular Payroll</h2>
 
+  
+  <button id="submitbutton" (click)="handleButtonClick()">{{ buttonText }}</button>
+  <div class="confirmation-modal" *ngIf="isConfirmationDialogOpen">
+    <div class="modal-content">
+      <p>Are you sure you want to submit and approve?</p>
+      <button (click)="confirmSubmitApprove()">Submit and Approve</button>
+      <button (click)="closeConfirmationDialog()">Cancel</button>
+    </div>
+  </div>
+  <div class="information-sections">
+    <div class="information-section">
+      <!-- <h3>Payroll Cost & Employee Net Pay</h3> -->
+      <div id="strong1"><strong>Payroll Cost:</strong> $50,000</div>
+      <div id="strong1"><strong>Employee Net Pay:</strong> $40,000</div>
+      <button id="bankadvicebutton" (click)="openBankAdviceDialog()">Download Bank Advice</button>
+
+    </div>
     
-    <button id="submitbutton" (click)="handleButtonClick()">{{ buttonText }}</button>
-    <div class="confirmation-modal" *ngIf="isConfirmationDialogOpen">
-      <div class="modal-content">
-        <p>Are you sure you want to submit and approve?</p>
-        <button (click)="confirmSubmitApprove()">Submit and Approve</button>
-        <button (click)="closeConfirmationDialog()">Cancel</button>
-      </div>
+    <div class="information-section">
+      <h3>Payday</h3>
+      <p>30th November 2023</p>
     </div>
-    <div class="information-sections">
-      <div class="information-section">
-        <h3>Payroll Cost & Employee Net Pay</h3>
-        <div><strong>Payroll Cost:</strong> $50,000</div>
-        <div><strong>Employee Net Pay:</strong> $40,000</div>
-        <button id="bankadvicebutton" (click)="openBankAdviceDialog()">Download Bank Advice</button>
-
-      </div>
-      
-      <div class="information-section">
-        <h3>Payday</h3>
-        <p>30th November 2023</p>
-      </div>
-      <div class="information-section">
-        <h3>Taxes and Deductions</h3>
-        <div><strong>Taxes:</strong> $1,200</div>
-        <div><strong>Pre-tax Deductions:</strong> $500</div>
-        <div><strong>Post-tax Deductions:</strong> $300</div>
-      </div>
-      
+    <div class="information-section">
+      <!-- <h3>Taxes and Deductions</h3> -->
+      <div id="strong1"><strong>Taxes:</strong> $1,200</div>
+      <div id="strong1"><strong>Pre-tax Deductions:</strong> $500</div>
+      <div id="strong1"><strong>Post-tax Deductions:</strong> $300</div>
     </div>
-  
     
-  
-    <div class="tabs">
-      <button [class.active]="currentTab === 'Employee Summary'" (click)="selectTab('Employee Summary')">Employee Summary</button>
-      <button [class.active]="currentTab === 'Taxes & Deductions'" (click)="selectTab('Taxes & Deductions')">Taxes & Deductions</button>
-    </div>
-  
-    <div *ngIf="currentTab === 'Employee Summary'" class="tab-content">
-
-      <div align="left" class="filter-options">
-        <label for="employee-filter">Filter by:</label>
-        <select id="employee-filter">
-          <option value="all">All Employees</option>
-          <!-- Add more filter options as needed -->
-        </select>
-      </div>
-      <table class="employee-summary-table">
-          <thead>
-              <tr>
-                  <th>Employee Name</th>
-                  <th>Paid Days</th>
-                  <th>Gross Pay</th>
-                  <th>Deduction</th>
-                  <th>Taxes</th>
-                  <th>Benefits</th>
-                  <th>Reimbursements</th>
-                  <th>Net Pay</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>John Doe</td>
-                  <td>22</td>
-                  <td>$5,500</td>
-                  <td>$500</td>
-                  <td>$1,200</td>
-                  <td>$300</td>
-                  <td>$100</td>
-                  <td>$4,000</td>
-              </tr>
-              <tr>
-                  <td>Jane Smith</td>
-                  <td>20</td>
-                  <td>$4,800</td>
-                  <td>$400</td>
-                  <td>$1,000</td>
-                  <td>$250</td>
-                  <td>$50</td>
-                  <td>$3,700</td>
-              </tr>
-              <tr>
-                  <td>Michael Johnson</td>
-                  <td>21</td>
-                  <td>$5,200</td>
-                  <td>$450</td>
-                  <td>$1,150</td>
-                  <td>$280</td>
-                  <td>$75</td>
-                  <td>$3,800</td>
-              </tr>
-              <!-- Additional example data rows -->
-              <tr>
-                  <td>Sarah Lee</td>
-                  <td>19</td>
-                  <td>$4,500</td>
-                  <td>$380</td>
-                  <td>$950</td>
-                  <td>$200</td>
-                  <td>$60</td>
-                  <td>$3,310</td>
-              </tr>
-              <tr>
-                  <td>David Brown</td>
-                  <td>18</td>
-                  <td>$4,200</td>
-                  <td>$350</td>
-                  <td>$900</td>
-                  <td>$180</td>
-                  <td>$45</td>
-                  <td>$3,225</td>
-              </tr>
-              <tr>
-                  <td>Emily Davis</td>
-                  <td>23</td>
-                  <td>$5,800</td>
-                  <td>$600</td>
-                  <td>$1,300</td>
-                  <td>$320</td>
-                  <td>$80</td>
-                  <td>$4,200</td>
-              </tr>
-          </tbody>
-      </table>
   </div>
 
-    
-  <div *ngIf="currentTab === 'Taxes & Deductions'" class="tab-content">
-    <div class="pay-deductions">
-      <h3 class="deductions">Tax Details</h3>
-      <table class="Tax-table">
+  
+
+  <div class="tabs">
+    <button [class.active]="currentTab === 'Employee Summary'" (click)="selectTab('Employee Summary')">Employee Summary</button>
+    <button [class.active]="currentTab === 'Taxes & Deductions'" (click)="selectTab('Taxes & Deductions')">Taxes & Deductions</button>
+  </div>
+
+  <div *ngIf="currentTab === 'Employee Summary'" class="tab-content">
+
+    <div align="left" class="filter-options">
+      <label for="employee-filter">Filter by:</label>
+      <select id="employee-filter">
+        <option value="all">All Employees</option>
+        <!-- Add more filter options as needed -->
+      </select>
+    </div>
+    <table class="employee-summary-table">
         <thead>
-          <tr>
-            <th>Tax Name</th>
-            <th>Paid By Employer</th>
-            <th>Paid By Employee</th>
-          </tr>
+            <tr>
+                <th>Employee Name</th>
+                <th>Paid Days</th>
+                <th>Gross Pay</th>
+                <th>Deduction</th>
+                <th>Taxes</th>
+                <th>Benefits</th>
+                <th>Reimbursements</th>
+                <th>Net Pay</th>
+            </tr>
         </thead>
         <tbody>
-          
-          <tr>
-            <td>Income Tax</td>
-            <td>0.00</td>
-            <td>2,108,252.00</td>
-          </tr>
-          <tr>
-            <td>TN Professional Tax(Head Office)</td>
-            <td>0.00</td>
-            <td>0.00</td>
-          </tr>
-          <tr>
-            <td>MH Professional Tax</td>
-            <td>0.00</td>
-            <td>400.00</td>
-          </tr>
-          <tr>
-            <td>TN Professional Tax</td>
-            <td>0.00</td>
-            <td>0.00</td>
-          </tr>
-          <tr>
-            <td><strong>Total</strong></td>
-            <td>0.00</td>
-            <td>2,108,652.00</td>
-          </tr>
+            <tr>
+                <td>John Doe</td>
+                <td>22</td>
+                <td>$5,500</td>
+                <td>$500</td>
+                <td>$1,200</td>
+                <td>$300</td>
+                <td>$100</td>
+                <td>$4,000</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>20</td>
+                <td>$4,800</td>
+                <td>$400</td>
+                <td>$1,000</td>
+                <td>$250</td>
+                <td>$50</td>
+                <td>$3,700</td>
+            </tr>
+            <tr>
+                <td>Michael Johnson</td>
+                <td>21</td>
+                <td>$5,200</td>
+                <td>$450</td>
+                <td>$1,150</td>
+                <td>$280</td>
+                <td>$75</td>
+                <td>$3,800</td>
+            </tr>
+            <!-- Additional example data rows -->
+            <tr>
+                <td>Sarah Lee</td>
+                <td>19</td>
+                <td>$4,500</td>
+                <td>$380</td>
+                <td>$950</td>
+                <td>$200</td>
+                <td>$60</td>
+                <td>$3,310</td>
+            </tr>
+            <tr>
+                <td>David Brown</td>
+                <td>18</td>
+                <td>$4,200</td>
+                <td>$350</td>
+                <td>$900</td>
+                <td>$180</td>
+                <td>$45</td>
+                <td>$3,225</td>
+            </tr>
+            <tr>
+                <td>Emily Davis</td>
+                <td>23</td>
+                <td>$5,800</td>
+                <td>$600</td>
+                <td>$1,300</td>
+                <td>$320</td>
+                <td>$80</td>
+                <td>$4,200</td>
+            </tr>
         </tbody>
-        <h3 class="deductions">Pre-Tax Deductions</h3>
-        <thead>
-          <tr>
-            <th>Deduction Name</th>
-            <th>Employer's Contribution</th>
-            <th>Employee's Contribution</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>EPF Contribution</td>
-            <td>180,714.00</td>
-            <td>190,005.00</td>
-          </tr>
-          <tr>
-            <td>EPF Contribution</td>
-            <td>9,291</td>
-            <td>0.00</td>
-          </tr>
-          <tr>
-            <td>Employer EDLI Contribution</td>
-            <td>1,637.00</td>
-            <td>0.00</td>
-          </tr>
-        </tbody>
-      </table>
+    </table>
+</div>
+
+  
+<div *ngIf="currentTab === 'Taxes & Deductions'" class="tab-content">
+  <div class="pay-deductions">
+    <h3 class="deductions">Tax Details</h3>
+    <table class="Tax-table">
+      <thead>
+        <tr>
+          <th>Tax Name</th>
+          <th>Paid By Employer</th>
+          <th>Paid By Employee</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>Income Tax</td>
+          <td>0.00</td>
+          <td>2,108,252.00</td>
+        </tr>
+        <tr>
+          <td>TN Professional Tax(Head Office)</td>
+          <td>0.00</td>
+          <td>0.00</td>
+        </tr>
+        <tr>
+          <td>MH Professional Tax</td>
+          <td>0.00</td>
+          <td>400.00</td>
+        </tr>
+        <tr>
+          <td>TN Professional Tax</td>
+          <td>0.00</td>
+          <td>0.00</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td>0.00</td>
+          <td>2,108,652.00</td>
+        </tr>
+      </tbody>
+      <h3 class="deductions">Pre-Tax Deductions</h3>
+      <thead>
+        <tr>
+          <th>Deduction Name</th>
+          <th>Employer's Contribution</th>
+          <th>Employee's Contribution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>EPF Contribution</td>
+          <td>180,714.00</td>
+          <td>190,005.00</td>
+        </tr>
+        <tr>
+          <td>EPF Contribution</td>
+          <td>9,291</td>
+          <td>0.00</td>
+        </tr>
+        <tr>
+          <td>Employer EDLI Contribution</td>
+          <td>1,637.00</td>
+          <td>0.00</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+</div>
+</div>
+<div class="bank-advice-modal" *ngIf="isBankAdviceDialogOpen">
+  <div class="modal-content">
+    <h3>Download Bank Advice</h3>
+    <label for="employee-selection">Select Employees:</label>
+    <select id="employee-selection">
+      <option value="unpaid">Unpaid Bank Transfer Employees</option>
+    </select>
+
+    <label for="bank-selection">Select Bank:</label>
+    <select id="bank-selection">
+      <option value="icici">ICICI Bank</option>
+      <option value="union">Union Bank of India</option>
+      <option value="axis">Axis Bank</option>
+      <option value="sbi">State Bank of India</option>
+      <option value="citi">Citi Bank</option>
+      <option value="karnataka">Karnataka Bank</option>
+    </select>
+
+    <div>
+      <input type="checkbox" id="password-protected" /> <label for="password-protected">Password Protect File</label>
+    </div>
+
+    <button (click)="downloadBankAdvice()">Download</button>
+    <button (click)="closeBankAdviceDialog()">Cancel</button>
   </div>
 </div>
-  </div>
-  <div class="bank-advice-modal" *ngIf="isBankAdviceDialogOpen">
-    <div class="modal-content">
-      <h3>Download Bank Advice</h3>
-      <label for="employee-selection">Select Employees:</label>
-      <select id="employee-selection">
-        <option value="unpaid">Unpaid Bank Transfer Employees</option>
-      </select>
-  
-      <label for="bank-selection">Select Bank:</label>
-      <select id="bank-selection">
-        <option value="icici">ICICI Bank</option>
-        <option value="union">Union Bank of India</option>
-        <option value="axis">Axis Bank</option>
-        <option value="sbi">State Bank of India</option>
-        <option value="citi">Citi Bank</option>
-        <option value="karnataka">Karnataka Bank</option>
-      </select>
-  
-      <div>
-        <input type="checkbox" id="password-protected" /> <label for="password-protected">Password Protect File</label>
-      </div>
-  
-      <button (click)="downloadBankAdvice()">Download</button>
-      <button (click)="closeBankAdviceDialog()">Cancel</button>
-    </div>
-  </div>
-  

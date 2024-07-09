@@ -25,7 +25,7 @@ h2 {
 }
 
 .tabs button:hover{
-  font-size: 18px;
+  /* font-size: 18px; */
   color: #c67707;
 }
 button {

@@ -30,8 +30,8 @@ form {
   
   button {
     padding: 12px;
-    color: #fff;
-    background-color: #007BFF;
+    color: rgb(65, 65, 65);
+    background-color: rgb(185, 185, 185);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -41,7 +41,8 @@ form {
   }
   
   button:hover {
-    background-color: #0056b3;
+    color: white;
+    background-color:#df8910;
   }
   
   p {
