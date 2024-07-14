@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="earnings.component.css">
+</head>
+<body>
+  <header>
+    <!-- Navbar content -->
+  </header>
+  <div>
+    <app-settings-sidebar></app-settings-sidebar>
+  </div>
+  <div class="content">
+    <title id="title">New Earnings Form</title>
+
+    <div class="earnings-form">
+      <h2>New Earnings</h2>
+      <form (ngSubmit)="submitEarnings()">
+        <div class="left-section">
+          <div>
+            <label for="earningName">Name of the earning:</label>
+            <input type="text" id="earningName" name="earningName" [(ngModel)]="earningName" required>
+          </div>
+          <div>
+            <label for="earningType">Earning Type:</label>
+            <select id="earningType" name="earningType" [(ngModel)]="earningType" required>
+              <option value="Type A">Type A</option>
+              <option value="Type B">Type B</option>
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+          <div>
+            <label for="calculationType">Calculation Type:</label>
+            <select id="calculationType" name="calculationType" [(ngModel)]="calculationType" required>
+              <option value="Flat Amount">Flat Amount</option>
+              <option value="Percentage of Basic">Percentage of Basic</option>
+            </select>
+            <div *ngIf="calculationType === 'Flat Amount'">
+              <label for="flatAmount">Amount:</label>
+              <input type="number" id="flatAmount" name="flatAmount" [(ngModel)]="flatAmount">
+            </div>
+            <div *ngIf="calculationType === 'Percentage of Basic'">
+              <label for="percentage">Percentage:</label>
+              <input type="number" id="percentage" name="percentage" [(ngModel)]="percentage">
+            </div>
+          </div>
+        </div>
+        <div class="right-section">
+          <div class="checkbox-section">
+            <label><input type="checkbox" [(ngModel)]="isPartOfSalaryStructure"> Make this earning as a part of the employee's salary structure</label>
+            <label><input type="checkbox" [(ngModel)]="isTaxable"> This is a taxable earning</label>
+            <label><input type="checkbox" [(ngModel)]="proRataBasis"> Calculate on pro rata basis</label>
+            <label><input type="checkbox" [(ngModel)]="flexibleBenefit"> Include this as flexible benefit plan component</label>
+            <label>Consider for EPF contribution:</label>
+            <input type="checkbox" id="epfAlways" [(ngModel)]="epfAlways">
+            <label for="epfAlways"> Always</label>
+            <input type="checkbox" id="epfLessThan15000" [(ngModel)]="epfLessThan15000">
+            <label for="epfLessThan15000"> When PF wage is less than 15,000</label>
+            <label><input type="checkbox" [(ngModel)]="esiContribution"> Consider for ESI contribution</label>
+            <label><input type="checkbox" [(ngModel)]="showInPayslip"> Show this component in payslip</label>
+          </div>
+        </div>
+        <button type="submit">Add Earnings</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

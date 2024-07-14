@@ -11,6 +11,9 @@ import { PayrunsComponent } from './payruns/payruns.component';
 import { RegularPayrollComponent } from './regular-payroll/regular-payroll.component';
 import {OrganizationprofileComponent} from './organizationprofile/organizationprofile.component';
 import { WorklocationsComponent } from './worklocations/worklocations.component';
+import { SalarycomponentComponent } from './salarycomponent/salarycomponent.component';
+import { EarningsComponent } from './earnings/earnings.component';
+import { TaxesComponent } from './taxes/taxes.component';
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
@@ -23,7 +26,10 @@ const routes: Routes = [
   { path: 'payruns', component: PayrunsComponent },
   { path: 'regular-payroll', component: RegularPayrollComponent },
   { path: 'organizationprofile', component: OrganizationprofileComponent },
-  { path: 'worklocations', component:WorklocationsComponent}
+  { path: 'worklocations', component:WorklocationsComponent},
+  { path: 'salarycomponent', component:SalarycomponentComponent},
+  { path: 'newearnings', component:EarningsComponent},
+  { path: 'taxes', component:TaxesComponent}
 ];
 
 @NgModule({

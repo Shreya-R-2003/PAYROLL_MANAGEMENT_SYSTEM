@@ -18,6 +18,9 @@ import { RegularPayrollComponent } from './regular-payroll/regular-payroll.compo
 import { OrganizationprofileComponent } from './organizationprofile/organizationprofile.component';
 import { WorklocationsComponent } from './worklocations/worklocations.component';
 import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.component';
+import { SalarycomponentComponent } from './salarycomponent/salarycomponent.component';
+import { EarningsComponent } from './earnings/earnings.component';
+import { TaxesComponent } from './taxes/taxes.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.co
     RegularPayrollComponent,
     OrganizationprofileComponent,
     WorklocationsComponent,
-    SettingsSidebarComponent
+    SettingsSidebarComponent,
+    SalarycomponentComponent,
+    EarningsComponent,
+    TaxesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,72 @@
+.taxes {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 7.5%;
+    margin-left: 20%;
+    width: 50%;
+  }
+  
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .input {
+    width: calc(100% - 10px); /* Adjusted for input padding */
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .small-input {
+    width: 50%; /* Reduced width for the small-input class */
+  }
+  
+  .button {
+    background-color: #c67707;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .button:hover {
+    background-color: #f3aa3c;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 100px; /* Adjust spacing between form elements */
+  }
+  
+  .form-row .form-group {
+    flex: 1; /* Take up equal space within the flex container */
+  }
+  
+  .deductor-type-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 7px; /* Added margin to create space between label and input */
+  }
+  
+  .tds-circle-group {
+    display: flex;
+    gap: 3px;
+  }
+  
+  @media (max-width: 768px) {
+    .taxes {
+      margin-left: 5%;
+      width: 90%;
+    }
+  }

@@ -11,15 +11,17 @@
 
     
     <div id="settingsDialog" class="modal" [ngClass]="{'show': isSettingsDialogOpen}">
-      <div class="modal-content">
-        <span class="close" (click)="closeSettingsDialog()">&times;</span>
-        <h2>Settings</h2>
-        <div class="options">
-          <a routerLink="/organizationprofile">Organization Profile</a>
-    
-        </div>
-      </div>
+  <div class="modal-content">
+    <span class="close" (click)="closeSettingsDialog()">&times;</span>
+    <h2>Settings</h2>
+    <div class="options">
+      <a routerLink="/organizationprofile">Organization Profile</a>
+      <a routerLink="/worklocations">Work Locations</a>
+      <a routerLink="/salarycomponent">Salary Componenet</a>
+
     </div>
+  </div>
+</div>
     <div id="welcome-content">Welcome, {{ companyName }}!</div>
     <div class="payrun-content">
       <h3>Process Pay Run for September 2023 <span class="status">Ready</span></h3>

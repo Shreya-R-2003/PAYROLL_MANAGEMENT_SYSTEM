@@ -1,0 +1,138 @@
+/* General reset and basic styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+  }
+  #title {
+    font-size: 28px;
+    color: #333; /* Dark color for better readability */
+    text-align: center; /* Center align the title */
+    margin-top: 20px; /* Add some top margin for spacing */
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 2px; /* Increase letter spacing for emphasis */
+    font-weight: bold; /* Make the font bold */
+  }
+  
+  
+  header {
+    height: 60px; /* Example height for the navbar */
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .sidebar {
+    width: 250px; /* Example width for the sidebar */
+    background-color: #ccc;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 60px; /* Height of the navbar */
+    bottom: 0;
+  }
+  
+  .content {
+    margin-left: 300px; /* Width of the sidebar */
+    padding: 20px;
+  }
+  
+  /* Earnings Form styling */
+  .earnings-form {
+    max-width: 800px;
+    margin: 100px auto 20px; /* Adjusted margins */
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+  }
+  
+  .left-section {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .right-section {
+    flex: 1;
+    padding-left: 20px;
+    border-left: 1px solid #ccc;
+  }
+  
+  .earnings-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .earnings-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  .earnings-form input[type="text"],
+  .earnings-form input[type="number"],
+  .earnings-form select {
+    width: calc(100% - 16px);
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .earnings-form select {
+    appearance: none;
+    padding-right: 30px;
+    background: transparent;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 10px);
+    background-position-y: center;
+  }
+  
+  .checkbox-section {
+    margin-top: 20px;
+  }
+  
+  .checkbox-section label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  .checkbox-section input[type="checkbox"] {
+    margin-right: 6px;
+    transform: translateY(2px);
+  }
+  
+  button[type="submit"] {
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    margin-top: 15px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .content {
+      margin-left: 0;
+    }
+  }
+  
