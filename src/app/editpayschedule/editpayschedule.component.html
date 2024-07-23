@@ -1,0 +1,70 @@
+<div>
+  <app-settings-sidebar></app-settings-sidebar>
+</div>
+
+<div class="editpayrun">
+
+  
+  <div *ngIf="showMessage" class="success-message">
+    <p>Pay schedule has been updated successfully..</p>
+  </div>
+  
+  <h2>Pay Schedule</h2>
+  <form [formGroup]="payScheduleForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label><h4>Select your work week</h4></label>
+      <div class="description">The days worked in a calendar week</div>
+      <div class="checkbox-group">
+        <label *ngFor="let day of ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']">
+          <input type="checkbox" [value]="day" (change)="onWorkWeekChange($event)" [checked]="workWeek.value.includes(day)">
+          <span>{{ day }}</span>
+        </label>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label><h4>Calculate monthly salary based on</h4></label>
+      <div>
+        <label class="radio-label">
+          <input type="radio" value="actualDays" formControlName="salaryBasis"> Actual days in a month
+        </label>
+        <label class="radio-label">
+          <input type="radio" value="organizationDays" formControlName="salaryBasis"> Organization working days
+          <input type="number" formControlName="organizationDays"><p> per month</p>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label><h4>Pay your employees on</h4></label>
+      <div>
+        <label class="radio-label">
+          <input type="radio" value="lastWorkingDay" formControlName="payDayOption"> The last working day of every month
+        </label>
+        <label class="radio-label">
+          <input type="radio" value="specificDay" formControlName="payDayOption"> Day
+          <input type="number" formControlName="specificDay"> <p>of every Month</p>
+        </label>
+      </div>
+    </div>
+
+    <div class="note">
+      <p><strong>Note : </strong>When payday falls on a non-working day or holiday, employees will get paid on the previous working day.</p>
+    </div>
+
+    <div class="form-group">
+      <label class="radio-label">Start your first payroll from</label>
+      <input type="month" formControlName="firstPayroll">
+    </div>
+
+    <div class="form-group" *ngIf="showPayDateField">
+      <label class="radio-label">Salary for the month of {{ formattedMonth }} will be paid on</label>
+      <input type="date" formControlName="payDate">
+    </div>
+
+    <div class="form-buttons">
+      <button type="submit">Save</button>
+      <button type="button" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>

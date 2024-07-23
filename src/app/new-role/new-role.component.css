@@ -1,0 +1,130 @@
+.new-role-container {
+    padding: 20px;
+    margin-top: 110px;
+    margin-left: 300px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #c67707;
+    outline: none;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #c67707;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #a96005;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #c67707;
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+.permissions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.permissions-table th,
+.permissions-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.permissions-table th {
+    background-color: #f2f2f2;
+}
+
+.permissions-table td input[type="checkbox"] {
+    margin: 0;
+}
+
+.additional-permissions {
+    margin-top: 20px;
+}
+
+.additional-permissions .form-group {
+    margin-bottom: 10px;
+}
+
+.additional-permissions .form-group label {
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+.additional-permissions .form-group input[type="checkbox"] {
+    margin-right: 10px;
+}

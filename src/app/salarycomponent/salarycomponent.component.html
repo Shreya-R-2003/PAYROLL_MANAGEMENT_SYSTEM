@@ -24,6 +24,7 @@
     </div>
 
     <div class="tab-content">
+        <!-- Existing Earnings Section -->
         <div *ngIf="currentTab === 'Earnings' && !selectedItem && !addEarnings" class="Earnings">
             <table>
                 <thead>
@@ -160,95 +161,95 @@
                 <form class="form-left">
                     <div class="form-group">
                         <label>Earning Type</label>
-                        <input type="text" [(ngModel)]="selectedItem.earningType" name="earningType" disabled />
+                        <input type="text" [(ngModel)]="newEarning.earningType" name="earningType" disabled />
                     </div>
                     <div class="form-group">
                         <label>Earning Name</label>
-                        <input type="text" [(ngModel)]="selectedItem.name" name="name" />
+                        <input type="text" [(ngModel)]="newEarning.name" name="name" />
                     </div>
                     <div class="form-group">
                         <label>Name in Payslip</label>
-                        <input type="text" [(ngModel)]="selectedItem.nameInPayslip" name="nameInPayslip" />
+                        <input type="text" [(ngModel)]="newEarning.nameInPayslip" name="nameInPayslip" />
                     </div>
                     <div class="form-group">
                         <label>Calculation Type</label>
                         <div>
                             <label>
-                                <input type="radio" [(ngModel)]="selectedItem.calculationType" name="calculationType" [value]="'Flat Amount'" />
+                                <input type="radio" [(ngModel)]="newEarning.calculationType" name="calculationType" [value]="'Flat Amount'" />
                                 Flat Amount
                             </label>
                             <label>
-                                <input type="radio" [(ngModel)]="selectedItem.calculationType" name="calculationType" [value]="'Percentage of Basic'" />
+                                <input type="radio" [(ngModel)]="newEarning.calculationType" name="calculationType" [value]="'Percentage of Basic'" />
                                 Percentage of Basic
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Enter Amount</label>
-                        <input type="number" [(ngModel)]="selectedItem.amount" name="amount" />
+                        <input type="number" [(ngModel)]="newEarning.amount" name="amount" />
                     </div>
                     <div class="form-group">
                         <label>Mark as Active</label>
-                        <input type="checkbox" [(ngModel)]="selectedItem.isActive" name="isActive" />
+                        <input type="checkbox" [(ngModel)]="newEarning.isActive" name="isActive" />
                     </div>
                 </form>
                 <div class="form-right">
                     <h3>Other Configurations</h3>
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" [(ngModel)]="selectedItem.includeInSalaryStructure" name="includeInSalaryStructure" />
+                            <input type="checkbox" [(ngModel)]="newEarning.includeInSalaryStructure" name="includeInSalaryStructure" />
                             Make this earning a part of the employee's salary structure
                         </label>
                     </div>
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" [(ngModel)]="selectedItem.isTaxable" name="isTaxable" />
+                            <input type="checkbox" [(ngModel)]="newEarning.isTaxable" name="isTaxable" />
                             This is a taxable earning
                         </label>
                         <p>The income tax amount will be divided equally and deducted every month across the financial year.</p>
                     </div>
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" [(ngModel)]="selectedItem.calculateProRata" name="calculateProRata" />
+                            <input type="checkbox" [(ngModel)]="newEarning.calculateProRata" name="calculateProRata" />
                             Calculate on pro-rata basis
                         </label>
                         <p>Pay will be adjusted based on employee working days.</p>
                     </div>
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" [(ngModel)]="selectedItem.includeInFBP" name="includeInFBP" />
+                            <input type="checkbox" [(ngModel)]="newEarning.includeInFBP" name="includeInFBP" />
                             Include this as a Flexible Benefit Plan component
                         </label>
                         <p>FBP allows your employees to personalise their salary structure by choosing how much they want to receive under each FBP component.</p>
                     </div>
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" [(ngModel)]="selectedItem.considerForEPF" name="considerForEPF" />
+                            <input type="checkbox" [(ngModel)]="newEarning.considerForEPF" name="considerForEPF" />
                             Consider for EPF Contribution
                         </label>
                     </div>
                     <div class="form-group">
                         <label>
-                            <input type="radio" [(ngModel)]="selectedItem.considerForEPF" name="epfOption" value="always" />
+                            <input type="radio" [(ngModel)]="newEarning.considerForEPF" name="epfOption" value="always" />
                             Always
                         </label>
                     </div>
                     <div class="form-group">
                         <label>
-                            <input type="radio" [(ngModel)]="selectedItem.considerForEPF" name="epfOption" value="below15000" />
+                            <input type="radio" [(ngModel)]="newEarning.considerForEPF" name="epfOption" value="below15000" />
                             Only when PF wage is less than 15,000
                         </label>
                     </div>
                     
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" [(ngModel)]="selectedItem.considerForESI" name="considerForESI" />
+                            <input type="checkbox" [(ngModel)]="newEarning.considerForESI" name="considerForESI" />
                             Consider for ESI Contribution
                         </label>
                     </div>
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" [(ngModel)]="selectedItem.considerForPayslip" name="considerForPayslip" />
+                            <input type="checkbox" [(ngModel)]="newEarning.considerForPayslip" name="considerForPayslip" />
                             Show this component in payslip
                         </label>
                     </div>
@@ -257,16 +258,110 @@
             <button (click)="addNewEarning()">Save</button>
         </div>
 
-        <!-- <div *ngIf="selectedItem" class="detail-view">
-            <button (click)="clearSelection()">Back</button>
-            <h2>Edit Earning</h2>
-            <Existing form for editing an earning goes here
-        </div> -->
+        <!-- New Sections for Deductions -->
+        <!-- Post-tax Deductions Section -->
+<div *ngIf="currentTab === 'Deductions' && addPostTax" class="detail-view">
+    <button (click)="clearSelection('PostTax')">Back</button>
+    <h2>New Post-tax Deduction</h2>
+    <div class="form-container">
+        <form class="form-left">
+            <div class="form-group">
+                <label>Deduction Name</label>
+                <input type="text" [(ngModel)]="newPostTax.name" name="name" />
+            </div>
+            <div class="form-group">
+                <label>Deduction Type</label>
+                <input type="text" [(ngModel)]="newPostTax.type" name="type" />
+            </div>
+            <div class="form-group">
+                <label>Enter Amount</label>
+                <input type="number" [(ngModel)]="newPostTax.amount" name="amount" />
+            </div>
+            <div class="form-group">
+                <label>Mark as Active</label>
+                <input type="checkbox" [(ngModel)]="newPostTax.isActive" name="isActive" />
+            </div>
+        </form>
+    </div>
+    <button (click)="addNewPostTax()">Save</button>
+</div>
 
-        <div *ngIf="currentTab === 'Deductions'">
-            <p>Deduction content</p>
-        </div>
+<!-- Listing Post-tax Deductions -->
+<div *ngIf="currentTab === 'Deductions' && !addPreTax && !addPostTax">
+    <h2> Pre Tax Deduction</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Deduction Name</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let deduction of postTaxDeductions" (click)="selectItem(deduction, 'PostTax')">
+                <td>{{ deduction.name }}</td>
+                <td>{{ deduction.type }}</td>
+                <td>{{ deduction.amount }}</td>
+                <td [class.status-active]="deduction.isActive" [class.status-inactive]="!deduction.isActive">{{ deduction.isActive ? 'Active' : 'Inactive' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
         
+<!-- PRE TAX -->
+<!-- Pre-tax Deductions Section -->
+<div *ngIf="currentTab === 'Deductions' && addPreTax" class="detail-view">
+    <button (click)="clearSelection('PreTax')">Back</button>
+    <h2>New Pre-tax Deduction</h2>
+    <div class="form-container">
+        <form class="form-left">
+            <div class="form-group">
+                <label>Deduction Name</label>
+                <input type="text" [(ngModel)]="newPreTax.name" name="name" />
+            </div>
+            <div class="form-group">
+                <label>Deduction Type</label>
+                <input type="text" [(ngModel)]="newPreTax.type" name="type" />
+            </div>
+            <div class="form-group">
+                <label>Enter Amount</label>
+                <input type="number" [(ngModel)]="newPreTax.amount" name="amount" />
+            </div>
+            <div class="form-group">
+                <label>Mark as Active</label>
+                <input type="checkbox" [(ngModel)]="newPreTax.isActive" name="isActive" />
+            </div>
+        </form>
+    </div>
+    <button (click)="addNewPreTax()">Save</button>
+</div>
+
+<!-- Listing Pre-tax Deductions -->
+<div *ngIf="currentTab === 'Deductions' && !addPreTax && !addPostTax">
+    <h2> Pre Tax Deduction</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Deduction Name</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let deduction of preTaxDeductions" (click)="selectItem(deduction, 'PreTax')">
+                <td>{{ deduction.name }}</td>
+                <td>{{ deduction.type }}</td>
+                <td>{{ deduction.amount }}</td>
+                <td [class.status-active]="deduction.isActive" [class.status-inactive]="!deduction.isActive">{{ deduction.isActive ? 'Active' : 'Inactive' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+    
         <div *ngIf="currentTab === 'Reimbursements' && !selectedItem && !addReimbursements" class="Reimbursements">
             <table>
                 <thead>
@@ -316,7 +411,6 @@
             </div>
             <button (click)="saveChanges('Reimbursements')">Save</button>
         </div>
-        
 
         <div *ngIf="addReimbursements" class="detail-view">
             <button (click)="clearSelection('Reimbursements')">Back</button>
@@ -346,6 +440,5 @@
             </div>
             <button (click)="addNewReimbursement()">Save</button>
         </div>
-
     </div>
 </div>

@@ -21,6 +21,19 @@ import { SettingsSidebarComponent } from './settings-sidebar/settings-sidebar.co
 import { SalarycomponentComponent } from './salarycomponent/salarycomponent.component';
 import { EarningsComponent } from './earnings/earnings.component';
 import { TaxesComponent } from './taxes/taxes.component';
+import { UsersRolesComponent } from './users-roles/users-roles.component';
+import { NewRoleComponent } from './new-role/new-role.component';
+import { PreferencesSidebarComponent } from './preferences-sidebar/preferences-sidebar.component';
+import { FlexiblebenefitplanComponent } from './flexiblebenefitplan/flexiblebenefitplan.component';
+import { ProofOfInvestmentsComponent } from './proof-of-investments/proof-of-investments.component';
+import { EditpayscheduleComponent } from './editpayschedule/editpayschedule.component';
+import { EmployeeCustomFieldComponent } from './employee-custom-field/employee-custom-field.component';
+import { EmployeePortalComponent } from './employee-portal/employee-portal.component';
+import { IncometaxdeclarationComponent } from './incometaxdeclaration/incometaxdeclaration.component';
+import { PayscheduleComponent } from './payschedule/payschedule.component';
+import { ReimbursementclaimsComponent } from './reimbursementclaims/reimbursementclaims.component';
+import { ReleasefbpdeclarationsComponent } from './releasefbpdeclarations/releasefbpdeclarations.component';
+import { ReleaseitdeclarationComponent } from './releaseitdeclaration/releaseitdeclaration.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +54,22 @@ import { TaxesComponent } from './taxes/taxes.component';
     SettingsSidebarComponent,
     SalarycomponentComponent,
     EarningsComponent,
-    TaxesComponent
+    TaxesComponent,
+    UsersRolesComponent,
+    NewRoleComponent,
+    PreferencesSidebarComponent,
+    FlexiblebenefitplanComponent,
+    ProofOfInvestmentsComponent,
+    EditpayscheduleComponent,
+    EmployeeCustomFieldComponent,
+    EmployeePortalComponent,
+    IncometaxdeclarationComponent,
+    PayscheduleComponent,
+    PreferencesSidebarComponent,
+    ReimbursementclaimsComponent,
+    ReleasefbpdeclarationsComponent,
+    ReleaseitdeclarationComponent
+
   ],
   imports: [
     BrowserModule,

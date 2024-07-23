@@ -1,0 +1,32 @@
+<div>
+    <app-preferences-sidebar></app-preferences-sidebar>
+</div>
+
+<div class="incometaxdeclaration">
+    <h2>IT Declaration Preference</h2>
+    <p>
+        Employees can declare their tax-saving investments and expense details through the employee portal once you enable this option.
+    </p>
+    <p>
+        Learn how to manage investment declarations. IT Declaration Help Document
+    </p>
+    <p>
+        Help your employees submit IT Declaration on time. Download and share this IT Declaration ebook.
+    </p>
+    <div class="declaration-locked">
+        
+        <h4>IT Declaration is Locked</h4>
+        <p>
+            You are yet to enable the submission of IT Declaration for your employees through their respective portals. Release IT Declaration or submit it on their behalf under Employees > Employee profile > Investments > IT Declaration.
+        </p>
+        <button (click)="releaseDeclaration()">Release IT Declaration</button>
+    </div>
+    <h4>Other Configurations</h4>
+    <div class="other-configurations">
+        
+        <input type="checkbox" id="switch-tax-regimes" checked>
+        <label for="switch-tax-regimes">Allow employees to switch tax regimes</label>
+        
+    </div>
+    <button class="save">Save</button>
+</div>

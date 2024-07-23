@@ -1,0 +1,270 @@
+<div class="new-role-container">
+    <app-settings-sidebar></app-settings-sidebar>
+    <h2>Create New Role</h2>
+    <form (submit)="addNewRole()">
+        <div class="form-group">
+            <label for="roleName">Role Name:</label>
+            <input type="text" id="roleName" [(ngModel)]="newRole.name" name="roleName" required>
+        </div>
+        <div class="form-group">
+            <label for="roleDescription">Description:</label>
+            <input type="text" id="roleDescription" [(ngModel)]="newRole.description" name="roleDescription">
+        </div>
+        <div class="form-group">
+            <label for="employeeToggle">Employee:</label>
+            <label class="switch">
+                <input type="checkbox" id="employeeToggle" [(ngModel)]="newRole.isEmployee" name="isEmployee">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div *ngIf="newRole.isEmployee">
+            <table class="permissions-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Full Access</th>
+                        <th>Create</th>
+                        <th>View</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of categories">
+                        <td>{{ category.name }}</td>
+                        <td><input type="checkbox" [(ngModel)]="category.permissions.fullAccess" name="{{category.name}}_fullAccess"></td>
+                        <td><input type="checkbox" [(ngModel)]="category.permissions.create" name="{{category.name}}_create"></td>
+                        <td><input type="checkbox" [(ngModel)]="category.permissions.view" name="{{category.name}}_view"></td>
+                        <td><input type="checkbox" [(ngModel)]="category.permissions.edit" name="{{category.name}}_edit"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="additional-permissions">
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" [(ngModel)]="newRole.permissions.viewAndDownloadPayslips" name="viewAndDownloadPayslips">
+                        Provide access to view and download employee payslips, TDS Worksheets and Forms
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" [(ngModel)]="newRole.permissions.terminateEmployee" name="terminateEmployee">
+                        Provide access to terminate an employee from the organisation
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" [(ngModel)]="newRole.permissions.deleteEmployee" name="deleteEmployee">
+                        Provide access to delete an employee who isn't associated to any payrun
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="payrollRunToggle">Payroll Run:</label>
+            <label class="switch">
+                <input type="checkbox" id="payrollRunToggle" [(ngModel)]="newRole.isPayrollRun" name="isPayrollRun">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div *ngIf="newRole.isPayrollRun">
+            <table class="permissions-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Full Access</th>
+                        <th>Create</th>
+                        <th>View</th>
+                        <th>Edit</th>
+                        <th>Approve</th>
+                        <th>Pay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Payroll Run</td>
+                        <td><input type="checkbox" [(ngModel)]="payrollRunPermissions.fullAccess" name="payrollRun_fullAccess"></td>
+                        <td><input type="checkbox" [(ngModel)]="payrollRunPermissions.create" name="payrollRun_create"></td>
+                        <td><input type="checkbox" [(ngModel)]="payrollRunPermissions.view" name="payrollRun_view"></td>
+                        <td><input type="checkbox" [(ngModel)]="payrollRunPermissions.edit" name="payrollRun_edit"></td>
+                        <td><input type="checkbox" [(ngModel)]="payrollRunPermissions.approve" name="payrollRun_approve"></td>
+                        <td><input type="checkbox" [(ngModel)]="payrollRunPermissions.pay" name="payrollRun_pay"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <label for="approvalsToggle">Approvals:</label>
+            <label class="switch">
+                <input type="checkbox" id="approvalsToggle" [(ngModel)]="newRole.isApprovals" name="isApprovals">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div *ngIf="newRole.isApprovals">
+            <table class="permissions-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Full Access</th>
+                        <th>Create</th>
+                        <th>View</th>
+                        <th>Edit</th>
+                        <th>Approve</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let approval of approvals">
+                        <td>{{ approval.name }}</td>
+                        <td><input type="checkbox" [(ngModel)]="approval.permissions.fullAccess" name="{{approval.name}}_fullAccess"></td>
+                        <td><input type="checkbox" [(ngModel)]="approval.permissions.create" name="{{approval.name}}_create"></td>
+                        <td><input type="checkbox" [(ngModel)]="approval.permissions.view" name="{{approval.name}}_view"></td>
+                        <td><input type="checkbox" [(ngModel)]="approval.permissions.edit" name="{{approval.name}}_edit"></td>
+                        <td><input type="checkbox" [(ngModel)]="approval.permissions.approve" name="{{approval.name}}_approve"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <label for="settingsToggle">Settings:</label>
+            <label class="switch">
+                <input type="checkbox" id="settingsToggle" [(ngModel)]="newRole.isSettings" name="isSettings">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div *ngIf="newRole.isSettings" class="additional-permissions">
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.updateOrgProfile" name="updateOrgProfile">
+                    Update organization profile
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.manageUsers" name="manageUsers">
+                    Manage Users
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.workLocation" name="workLocation">
+                    Work Location
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.department" name="department">
+                    Department
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.designation" name="designation">
+                    Designation
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.salaryAndStatutoryComponents" name="salaryAndStatutoryComponents">
+                    Salary and Statutory components
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.salaryTemplates" name="salaryTemplates">
+                    Salary Templates
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.taxes" name="taxes">
+                    Taxes
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.paySchedule" name="paySchedule">
+                    Pay Schedule
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.emailTemplates" name="emailTemplates">
+                    Email Templates
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.integration" name="integration">
+                    Integration
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settingsPermissions.provideAccessToProtectedData" name="provideAccessToProtectedData">
+                    Provide access to protected data
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="preferencesToggle">Preferences:</label>
+            <label class="switch">
+                <input type="checkbox" id="preferencesToggle" [(ngModel)]="newRole.isPreferences" name="isPreferences">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div *ngIf="newRole.isPreferences" class="additional-permissions">
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="preferencesPermissions.reimbursementsAndFBPSettings" name="reimbursementsAndFBPSettings">
+                    Reimbursements and FBP settings
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="preferencesPermissions.itDeclaration" name="itDeclaration">
+                    IT declaration
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="reportToggle">Report:</label>
+            <label class="switch">
+                <input type="checkbox" id="reportToggle" [(ngModel)]="newRole.isReport" name="isReport">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div *ngIf="newRole.isReport" class="additional-permissions">
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="reportPermissions.payrollReports" name="payrollReports">
+                    Payroll reports
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="reportPermissions.deductionReports" name="deductionReports">
+                    Deduction reports
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" [(ngModel)]="reportPermissions.taxReports" name="taxReports">
+                    Tax reports
+                </label>
+            </div>
+        </div>
+
+        <button type="submit">Save Role</button>
+    </form>
+</div>

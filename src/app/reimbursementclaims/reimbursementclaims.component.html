@@ -1,0 +1,45 @@
+<div>
+  <app-preferences-sidebar></app-preferences-sidebar>
+</div>
+<div class="reimbursementclaims">
+  <h2>Reimbursement Claims Preference</h2>
+  <hr>
+  <p>
+    Reimbursements are defined as part of employees' salary to cover their expenses incurred.
+    For employees without portal, you can enter it on their behalf under Approvals > Reimbursements > New Claim.
+  </p>
+  
+  <div class="form">
+    <form (ngSubmit)="savePreferences()">
+      <div class="selectday">
+        <label for="submission-day">Select the last day to submit the reimbursement claim</label>
+        <div class="day-input-wrapper">
+          <span class="day-label">Day</span>
+          <select id="submission-day" [(ngModel)]="selectedDay" name="submission-day">
+            <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+          </select>
+        </div>
+      </div>
+      <p class="submission-info">
+        Employee can submit their reimbursement bills on or before <span>{{ selectedDay }}</span> of every month.
+      </p>
+      <div>
+        <h3><i class="fas fa-bell"></i>Manage alerts for Employees</h3>
+        <p>Let employer send mail notifications automatically.</p>
+        <label>
+          <input type="checkbox" checked>
+          Notify when the last day to submit reimbursement claims is changed
+        </label>
+        <label>
+          <input type="checkbox" checked>
+          Notify when reimbursement claim submission is RELEASED
+        </label>
+        <label>
+          <input type="checkbox" checked>
+          Notify when reimbursement claim submission is LOCKED
+        </label>
+      </div>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>

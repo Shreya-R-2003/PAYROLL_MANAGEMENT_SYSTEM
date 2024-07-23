@@ -1,0 +1,31 @@
+<div>
+    <app-preferences-sidebar></app-preferences-sidebar>
+</div>
+<div class="fbp-preference">
+    <h2>FBP Preference</h2>
+    <p>FBP allows your employees to design their salary structure based on anticipated expenses and thereby reduce their taxable income.</p>
+    
+    <div class="fbp-content">
+        <div class="fbp-declaration">
+            <label for="fbp-date">Allow employees to submit FBP Declaration through the employee portal and lock on the selected date</label>
+            <input id="fbp-date" type="date" (change)="onDateChange($event)">
+        </div>
+
+        <!-- Message placeholder -->
+        <p *ngIf="selectedDateMessage" class="message">{{ selectedDateMessage }}</p>
+
+        <h3><i class="fas fa-bell"></i>Manage alerts for Employees</h3>
+        <p class="small-text">Let employer send mail notifications automatically</p>
+        <label class="checkbox">
+            <input type="checkbox" checked> Notify when FBP Declaration is RELEASED
+        </label>
+        <label class="checkbox">
+            <input type="checkbox" checked> Notify when FBP Declaration is LOCKED
+        </label>
+        
+        <div class="button-group">
+            <button class="btn-primary" (click)="onSave()">Save</button>
+            <button class="btn-warning">Lock FBP Declaration</button>
+        </div>
+    </div>
+</div>

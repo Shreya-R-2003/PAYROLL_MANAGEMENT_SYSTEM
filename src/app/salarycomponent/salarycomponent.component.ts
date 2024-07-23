@@ -11,6 +11,8 @@ export class SalarycomponentComponent {
   selectedItem: any = null;
   earnings: any[] = [];
   reimbursements: any[] = [];
+  preTaxDeductions: any[] = [];
+  postTaxDeductions: any[] = [];
   dropdownOpen: boolean = false; 
   addEarnings: boolean = false;
   addCorrections = false;
@@ -34,34 +36,53 @@ export class SalarycomponentComponent {
     status: 'Active'
   };
 
+  newPreTax: any = {
+    name: '',
+    type: '',
+    amount: 0,
+    isActive: true
+  };
+
+  newPostTax: any = {
+    name: '',
+    type: '',
+    amount: 0,
+    isActive: true
+  };
+
   constructor(private router: Router){
     this.earnings = this.getEarningsFromStorage();
-    this.reimbursements = this.getReimbursemenfromStorage();
+    this.reimbursements = this.getReimbursementsFromStorage();
+    this.preTaxDeductions = this.getPreTaxDeductionsFromStorage();
+    this.postTaxDeductions = this.getPostTaxDeductionsFromStorage();
   }
 
   selectTab(tab: string) {
     this.currentTab = tab;
     this.selectedItem = null;
     this.addEarnings = false;
+    this.addPreTax = false;
+    this.addPostTax = false;
+    this.addReimbursements = false;
   }
 
-  selectItem(item: any, type:String) {
-    if(type === 'Earnings'){
-      this.selectedItem = item;
-      this.addEarnings = false;
-    }
-    if(type === 'Reimbursements'){
-      this.selectedItem = item;
-      this.addReimbursements = false;
-    }
+  selectItem(item: any, type: string) {
+    this.selectedItem = item;
+    this.addEarnings = false;
+    this.addPreTax = false;
+    this.addPostTax = false;
+    this.addReimbursements = false;
   }
 
-  clearSelection(type: String) {
+  clearSelection(type: string) {
     this.selectedItem = null;
-    if(type === 'Earnings'){
+    if (type === 'Earnings') {
       this.addEarnings = false;
-    }
-    else if( type === 'Reimbursements'){
+    } else if (type === 'PreTax') {
+      this.addPreTax = false;
+    } else if (type === 'PostTax') {
+      this.addPostTax = false;
+    } else if (type === 'Reimbursements') {
       this.addReimbursements = false;
     }
   }
@@ -87,7 +108,6 @@ export class SalarycomponentComponent {
                 considerForEPF: this.selectedItem.considerForEPF,
                 considerForESI: this.selectedItem.considerForESI,
                 considerForPayslip: this.selectedItem.considerForPayslip
-                // Add more properties as needed
             };
 
             // Update earnings in local storage
@@ -110,7 +130,6 @@ export class SalarycomponentComponent {
               reimbursementType: this.selectedItem.reimbursementType,
               maxAmount: this.selectedItem.maxAmount,
               status: this.selectedItem.status
-              // Add more properties as needed
           };
 
           // Update reimbursements in local storage
@@ -121,8 +140,40 @@ export class SalarycomponentComponent {
       }
   }
 
-}
+    if (type === 'PreTax' && this.selectedItem) {
+        const index = this.preTaxDeductions.findIndex(item => item === this.selectedItem);
 
+        if (index !== -1) {
+            this.preTaxDeductions[index] = {
+                ...this.selectedItem,
+                name: this.selectedItem.name,
+                type: this.selectedItem.type,
+                amount: this.selectedItem.amount,
+                isActive: this.selectedItem.isActive
+            };
+
+            localStorage.setItem('preTaxDeductions', JSON.stringify(this.preTaxDeductions));
+            this.selectedItem = null;
+        }
+    }
+
+    if (type === 'PostTax' && this.selectedItem) {
+        const index = this.postTaxDeductions.findIndex(item => item === this.selectedItem);
+
+        if (index !== -1) {
+            this.postTaxDeductions[index] = {
+                ...this.selectedItem,
+                name: this.selectedItem.name,
+                type: this.selectedItem.type,
+                amount: this.selectedItem.amount,
+                isActive: this.selectedItem.isActive
+            };
+
+            localStorage.setItem('postTaxDeductions', JSON.stringify(this.postTaxDeductions));
+            this.selectedItem = null;
+        }
+    }
+  }
 
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
@@ -133,9 +184,19 @@ export class SalarycomponentComponent {
     return earnings ? JSON.parse(earnings) : [];
   }
 
-  getReimbursemenfromStorage() :any[] {
+  getReimbursementsFromStorage(): any[] {
     const reimbursements = localStorage.getItem('reimbursements');
     return reimbursements ? JSON.parse(reimbursements) : []; 
+  }
+
+  getPreTaxDeductionsFromStorage(): any[] {
+    const preTaxDeductions = localStorage.getItem('preTaxDeductions');
+    return preTaxDeductions ? JSON.parse(preTaxDeductions) : [];
+  }
+
+  getPostTaxDeductionsFromStorage(): any[] {
+    const postTaxDeductions = localStorage.getItem('postTaxDeductions');
+    return postTaxDeductions ? JSON.parse(postTaxDeductions) : [];
   }
 
   addComponent(type: string) {
@@ -154,27 +215,17 @@ export class SalarycomponentComponent {
   }
 
   addNewEarning() {
-    // Assuming selectedItem is not used for adding new earnings, reset it if necessary
     this.selectedItem = null;
-  
-    // Create a new earning object from form values
     const newEarning = {
       name: this.newEarning.name,
       earningType: this.newEarning.earningType,
       calculationType: this.newEarning.calculationType,
       considerForEPF: this.newEarning.considerForEPF,
       considerForESI: this.newEarning.considerForESI,
-      status: this.newEarning.status, // Assuming status is always 'Active' for new entries
-      // Add more properties as needed from your form
+      status: this.newEarning.status
     };
-  
-    // Push the new earning object to the earnings array
     this.earnings.push(newEarning);
-  
-    // Update earnings in local storage
     localStorage.setItem('earnings', JSON.stringify(this.earnings));
-  
-    // Reset newEarning to clear the form
     this.newEarning = {
       name: '',
       earningType: '',
@@ -183,46 +234,63 @@ export class SalarycomponentComponent {
       considerForESI: false,
       status: 'Active'
     };
-  
-    // Close the add earnings view
     this.addEarnings = false;
   }
 
   addNewReimbursement() {
-    // Assuming selectedItem is not used for adding new earnings, reset it if necessary
     this.selectedItem = null;
+    const newReimbursement = {
+      name: this.newReimbursement.name,
+      reimbursementType: this.newReimbursement.reimbursementType,
+      maxAmount: this.newReimbursement.maxAmount,
+      status: this.newReimbursement.status
+    };
+    this.reimbursements.push(newReimbursement);
+    localStorage.setItem('reimbursements', JSON.stringify(this.reimbursements));
+    this.newReimbursement = {
+      name: '',
+      reimbursementType: '',
+      maxAmount: 0,
+      status: 'Active'
+    };
+    this.addReimbursements = false;
+  }
 
-      const newReimbursement = {
-        name: this.newReimbursement.name,
-        reimbursementType: this.newReimbursement.reimbursementType,
-        maxAmount: this.newReimbursement.maxAmount,
-        status: this.newReimbursement.status
-      };
+  addNewPreTax() {
+    this.selectedItem = null;
+    const newPreTax = {
+      name: this.newPreTax.name,
+      type: this.newPreTax.type,
+      amount: this.newPreTax.amount,
+      isActive: this.newPreTax.isActive
+    };
+    this.preTaxDeductions.push(newPreTax);
+    localStorage.setItem('preTaxDeductions', JSON.stringify(this.preTaxDeductions));
+    this.newPreTax = {
+      name: '',
+      type: '',
+      amount: 0,
+      isActive: true
+    };
+    this.addPreTax = false;
+  }
 
-      this.reimbursements.push(newReimbursement);
-
-      localStorage.setItem('reimbursements', JSON.stringify(this.reimbursements));
-
-      this.newReimbursement = {
-        name: '',
-        earningType: '',
-        calculationType: '',
-        considerForEPF: false,
-        considerForESI: false,
-        status: 'Active'
-      };
-
-      this.addReimbursements = false;
-    }
-  
-
-  updateInStorage(type: String) {
-    if(type === 'Earnings'){
-      localStorage.setItem('earnings', JSON.stringify(this.earnings));
-    }
-    else if (type === 'Reimbursements'){
-      localStorage.setItem('reimbursements', JSON.stringify(this.reimbursements));
-    }
-    
+  addNewPostTax() {
+    this.selectedItem = null;
+    const newPostTax = {
+      name: this.newPostTax.name,
+      type: this.newPostTax.type,
+      amount: this.newPostTax.amount,
+      isActive: this.newPostTax.isActive
+    };
+    this.postTaxDeductions.push(newPostTax);
+    localStorage.setItem('postTaxDeductions', JSON.stringify(this.postTaxDeductions));
+    this.newPostTax = {
+      name: '',
+      type: '',
+      amount: 0,
+      isActive: true
+    };
+    this.addPostTax = false;
   }
 }

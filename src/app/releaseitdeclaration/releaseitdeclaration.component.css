@@ -1,0 +1,119 @@
+
+.releaseitdeclaration {
+    margin-left: 37%;
+    margin-top: 8%;
+    max-width: 700px;
+}
+
+.declarations{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.reminders{
+    margin-left:40px;
+}
+
+.reminders button{
+    border: none;
+    background-color:white;
+    color:#c67707;
+    font-size: 16px;
+    padding-bottom: 10px;
+    padding-top: 2px;
+}
+
+.alerts h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alerts label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.date {
+    display: flex;
+    flex-direction: row; 
+    gap: 10px; 
+}
+
+.alerts label {
+    display: block;     
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px; 
+}
+
+.save{
+    background-color: #c67707;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.other-configurations{
+    margin-top: 30px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+}
+
+.date input{
+    width: 150px;
+}
+
+.message{
+    color: #c67707;
+}
+
+.button{
+    background-color: #c67707;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+
+.modal-content label{
+    padding-right: 20px;
+}

@@ -1,0 +1,36 @@
+
+
+.flexible-benefit-plan {
+  margin-left: 34%; /* Adjusted to account for the sidebar */
+  padding: 20px;
+  margin-top: 7%;
+}
+
+.fbp-content {
+  text-align: center;
+  margin-top: 50px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 3px;
+}
+
+.fbp-locked p{
+  width: 500px;
+  margin-left: 100px;
+  margin-bottom: 20px;
+}
+
+.fbp-locked button {
+  background-color: #c67707;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.fbp-locked button:hover {
+  background-color: #f3aa3f;
+}

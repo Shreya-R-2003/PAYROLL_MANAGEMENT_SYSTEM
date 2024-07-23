@@ -1,0 +1,66 @@
+
+
+.incometaxdeclaration {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-left: 34%;
+    margin-top: 7%;
+    max-width: 800px;
+}
+
+.declaration-locked {
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.declaration-locked button {
+    background-color: #c67707;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.declaration-locked button:hover {
+    background-color: #f3aa3f;
+}
+
+.other-configurations {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+.other-configurations input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.save{
+    margin-left: auto;
+    background-color: #c67707;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.other-configurations button:hover {
+    background-color: #f3aa3f;
+}
+
+.declarationitlocked{
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 3px;
+}

@@ -1,0 +1,40 @@
+<div>
+    <app-preferences-sidebar></app-preferences-sidebar>
+</div>
+<div class="preferences">
+    <h2>Employee Portal</h2>
+    <hr class="hr">
+    <div class="headings">
+        <h3>Enable Portal Access</h3>
+        <span class="active">ACTIVE</span>
+        <div class="switch-wrapper">
+            <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+    <p>The employee portal allows your employees to access their salary information and perform payroll related activities like declaring their Flexible Benefit Plan (FBP) and submitting investment proofs for approval.</p>
+    <hr>
+    <h3>Portal Contact Information</h3>
+    <p>This is the email address to which your employees can send queries through the portal.</p>
+    <div class="contact-info">
+        <i class="fas fa-envelope"></i>
+        <div>
+            <span class="contact-name">Test Org Payroll</span><br>
+            <span class="contact-email">testorg.payroll&#64;example.com</span>
+        </div>
+        <a href="#" class="manage-contacts">Manage Contacts</a>
+    </div>
+    <hr>
+    <h3>Banner Message</h3>
+    <p>Send important notifications or announcements to your employees using this space. The message you enter here will be displayed at the top of the Home page in the Employee Self-service Portal.</p>
+    <div class="banner-message">
+        <label for="bannerMessage">Enter Banner Message</label>
+        <textarea id="bannerMessage" [(ngModel)]="bannerMessage" placeholder="Enter Banner Message" required></textarea>
+        <label for="displayDate">Select till when this message must be displayed in the portal</label>
+        <input type="date" id="displayDate" [(ngModel)]="displayDate" required>
+    </div>
+    <button type="button" class="save-button" (click)="saveData()">Save</button>
+</div>
+

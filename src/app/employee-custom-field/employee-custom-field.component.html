@@ -1,0 +1,71 @@
+<div>
+  <app-preferences-sidebar></app-preferences-sidebar>
+</div>
+<div class="preferences">
+  <div class="topbar">
+    <h1>{{ showForm ? "New Custom Field" : "Employee Portal" }}</h1>
+    <button type="button" class="btn btn-primary btn-lg" (click)="toggleForm()">
+      Create New
+    </button>
+  </div>
+  <hr class="hr" />
+  
+  <ng-container *ngIf="!showForm; else newCustomFieldForm">
+    <div class="image-container">
+      <img
+        src="../../assets/Working-rafiki.jpeg"
+        alt="Work illustrations by Storyset"
+      />
+    </div>
+    <div class="centered-content">
+      <h2>You haven't created any custom fields yet.</h2>
+      <button type="button" class="btn btn-primary-lg" (click)="toggleForm()">
+        Create Custom Field
+      </button>
+    </div>
+  </ng-container>
+  
+    <!-- New Custom Field Form -->
+  <ng-template #newCustomFieldForm>
+    <div class="custom-field-form">
+      <div class="form-group">
+        <label class="label" for="fieldName"
+        >Field Name<span class="required">*</span></label>
+        <input
+          type="text"
+          id="fieldName"
+          [(ngModel)]="newField.name"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label class="label" for="dataType"
+          >Data Type<span class="required">*</span></label
+        >
+        <select
+          id="dataType"
+          [(ngModel)]="newField.dataType"
+          class="form-control"
+          required
+        >
+          <option value="">Select Data Type</option>
+          <option value="text">Text</option>
+          <option value="number">Number</option>
+          <option value="date">Date</option>
+          <option value="boolean">Boolean</option>
+        </select>
+      </div>
+  
+      <div class="button-container">
+        <button type="button" class="btn btn-primary" (click)="saveField()">
+          Save
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="toggleForm()">
+          Cancel
+        </button>
+        <p class="mandatory-note">*Indicates mandatory fields</p>
+      </div>
+    </div>
+  </ng-template>
+</div>

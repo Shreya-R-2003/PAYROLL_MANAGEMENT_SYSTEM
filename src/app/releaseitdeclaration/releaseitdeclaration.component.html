@@ -1,0 +1,70 @@
+<div>
+  <app-preferences-sidebar></app-preferences-sidebar>
+</div>
+
+<div class="releaseitdeclaration">
+  <h2>IT Declaration Preferences</h2><hr>
+  <p>
+    Employees can declare their tax saving investments and expense details through the employee portal once you enable this option. For employees without portal, you can submit it on their behalf under Employees > Employee profile > Investment > IT Declaration.
+  </p>
+  <p>
+    Learn how to manage investment declarations. IT Declaration Help Document
+  </p>
+  <p>
+    Help your employees submit IT Declaration on time. Download and share this IT Declaration ebook.
+  </p>
+  <div class="declarations">
+    <div class="date">
+      <label>
+        Allow employees to submit IT Declaration through the employee portal and lock on the selected date
+      </label>
+      <input type="date" (change)="onDateChange($event)" [value]="selectedDate" placeholder="dd/MM/yyyy" />
+    </div>
+    <p *ngIf="selectedDate" class="message">
+      Employees can declare their IT savings plan anytime between {{ currentDate }} and {{ selectedDate }}.
+    </p>
+    <div class="alerts">
+      <h3><i class="fas fa-bell"></i>Manage alerts for Employees</h3>
+      <p>Let employer send mail notifications and reminders automatically based on the configured lock date.</p>
+      <label>
+        <input type="checkbox" checked>
+        Notify when IT Declaration is RELEASED
+      </label>
+      <label>
+        <input type="checkbox" checked>
+        Enable e-mail reminder to employees to submit before lock date
+      </label>
+      <div class="reminders">
+        <label *ngFor="let reminder of reminders">
+          <input type="checkbox" checked>
+          Send Reminder {{ reminder }} day(s) before the lock date
+        </label>
+        <button (click)="showPopup()"> + Add Reminder</button>
+      </div>
+      <label>
+        <input type="checkbox" checked>
+        Notify when IT Declaration is LOCKED
+      </label>
+    </div>
+  </div>
+  <h4>Other Configurations</h4>
+  <div class="other-configurations">
+    
+    <input type="checkbox" id="switch-tax-regimes" checked>
+    <label for="switch-tax-regimes">Allow employees to switch tax regimes</label>
+  </div>
+  <button class="save">Save</button>
+
+  <div *ngIf="isPopupVisible" class="modal">
+    <div class="modal-content">
+      <h2>Add Reminder</h2>
+      <label for="reminderDays">Days before lock date:</label>
+      <input type="number" id="reminderDays" [(ngModel)]="reminderDays">
+      <div class="modal-actions">
+        <button (click)="addReminder()" class="button">Add</button>
+        <button (click)="closePopup()" class="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
